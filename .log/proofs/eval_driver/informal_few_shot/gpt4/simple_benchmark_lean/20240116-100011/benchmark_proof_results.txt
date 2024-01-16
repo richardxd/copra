@@ -1,0 +1,182 @@
+Settings: 
+{
+    "name": "n_4_informal_gpt4_turbo",
+    "use_hammer": false,
+    "setting_type": "Agent",
+    "max_proof_depth": 100,
+    "timeout_in_secs": 60,
+    "proof_retries": 1,
+    "max_tokens_per_action": 1000,
+    "max_theorems_in_prompt": 7,
+    "gpt_model_name": "gpt-4-1106-preview",
+    "max_number_of_episodes": 1,
+    "max_steps_per_episode": 4,
+    "render": true,
+    "checkpoint_dir": ".log/checkpoints/simple_benchmark_lean/n_4_informal_gpt4_turbo/lean_few_shot_informal",
+    "should_checkpoint": false,
+    "temperature": 0.0,
+    "max_history_messages": 0,
+    "policy_name": "InformalFewShot",
+    "proof_dump_dir": ".log/proofs/eval_driver/informal_few_shot/gpt4/simple_benchmark_lean/20240116-100011",
+    "use_human_readable_proof_context": true,
+    "sample": 1.0,
+    "sample_seed": 3840,
+    "use_example_retrieval": false,
+    "always_use_useful_theorem_retrieval": false,
+    "num_goal_per_prompt": null
+}
+Benchmark: 
+{
+    "name": "simple_benchmark_lean",
+    "num_files": 2,
+    "language": "LEAN",
+    "datasets": [
+        {
+            "project": "data/test/lean_proj",
+            "files": [
+                {
+                    "path": "src/simple.lean",
+                    "theorems": [
+                        "a_plus_b_b_plus_a",
+                        "a_plus_zero",
+                        "ab_square",
+                        "mathd_algebra_478",
+                        "mod_arith_1",
+                        "n_less_2_pow_n"
+                    ]
+                }
+            ]
+        }
+    ],
+    "few_shot_data_path_for_retrieval": null,
+    "few_shot_metadata_filename_for_retrieval": null,
+    "dfs_data_path_for_retrieval": null,
+    "dfs_metadata_filename_for_retrieval": null
+}
+Lemma: a_plus_b_b_plus_a
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+a_plus_b_b_plus_a
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: a_plus_b_b_plus_a
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: -1
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {}
+
+
+Lemma: a_plus_zero
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+a_plus_zero
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: a_plus_zero
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: -1
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {}
+
+
+Lemma: ab_square
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+ab_square
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: ab_square
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: -1
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {}
+
+
+Lemma: mathd_algebra_478
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+mathd_algebra_478
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: mathd_algebra_478
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: -1
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {}
+
+
+Lemma: mod_arith_1
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+mod_arith_1
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: mod_arith_1
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: -1
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {}
+
+
+Lemma: n_less_2_pow_n
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+n_less_2_pow_n
+Proof.
+    
+
+
+ProofFile: None
+LemmaName: n_less_2_pow_n
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: -1
+SearchTimeInSecs: -1
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {}
+
+
+Success rate: 0/6 = 0.0 for benchmark: simple_benchmark_lean

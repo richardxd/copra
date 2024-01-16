@@ -1,0 +1,700 @@
+2024-01-08 23:25:43,452 - __main__ - INFO - Pid: 10969
+2024-01-08 23:25:43,453 - __main__ - INFO - Running Experiment: {
+    "env_settings": {
+        "name": "bm25_retrieval",
+        "retrieval_strategy": "BM25"
+    },
+    "prompt_settings": {
+        "name": "lean_dfs",
+        "main_prompt": "data/prompts/system/lean-proof-agent-with-dfs.md",
+        "conv_prompt": "data/prompts/conversation/lean-proof-agent-example-long-conv-dfs.md",
+        "informal_proof_repo": null
+    },
+    "eval_settings": {
+        "name": "n_60_dfs_gpt4_always_retrieve_no_ex",
+        "use_hammer": false,
+        "setting_type": "Agent",
+        "max_proof_depth": 100,
+        "timeout_in_secs": 60,
+        "proof_retries": 1,
+        "max_tokens_per_action": 100,
+        "max_theorems_in_prompt": 3,
+        "gpt_model_name": "gpt-4",
+        "max_number_of_episodes": 1,
+        "max_steps_per_episode": 60,
+        "render": false,
+        "checkpoint_dir": ".log/checkpoints",
+        "should_checkpoint": false,
+        "temperature": 0.0,
+        "max_history_messages": 0,
+        "policy_name": "Dfs",
+        "proof_dump_dir": ".log/proofs/eval_driver/dfs",
+        "use_human_readable_proof_context": true,
+        "sample": 1.0,
+        "sample_seed": 3840,
+        "use_example_retrieval": false,
+        "always_use_useful_theorem_retrieval": true,
+        "num_goal_per_prompt": null
+    },
+    "benchmark": {
+        "name": "simple_benchmark_lean",
+        "num_files": 2,
+        "language": "LEAN",
+        "datasets": [
+            {
+                "project": "data/test/lean_proj",
+                "files": [
+                    {
+                        "path": "src/simple.lean",
+                        "theorems": "*"
+                    }
+                ]
+            }
+        ],
+        "few_shot_data_path_for_retrieval": null,
+        "few_shot_metadata_filename_for_retrieval": null,
+        "dfs_data_path_for_retrieval": null,
+        "dfs_metadata_filename_for_retrieval": null
+    }
+}
+2024-01-08 23:25:43,468 - __main__ - INFO - Getting all lemmas in file: data/test/lean_proj/src/simple.lean with timeout: 300000 seconds
+2024-01-08 23:25:44,060 - __main__ - INFO - Discovered 6 lemmas
+2024-01-08 23:25:44,067 - __main__ - INFO - Discovered 6 lemmas to prove in data/test/lean_proj/src/simple.lean
+2024-01-08 23:25:44,067 - __main__ - INFO - Lemmas to prove in file data/test/lean_proj/src/simple.lean: 
+['a_plus_b_b_plus_a', 'mod_arith_1', 'n_less_2_pow_n', 'a_plus_zero', 'mathd_algebra_478', 'ab_square']
+2024-01-08 23:25:44,067 - __main__ - INFO - Attempting to prove lemma: a_plus_b_b_plus_a
+2024-01-08 23:25:44,386 - __main__ - INFO - Running the prover agent for lemma: a_plus_b_b_plus_a with timeout: 720 seconds
+2024-01-08 23:25:48,676 - __main__ - INFO - Step 0/60 (Actual steps: 0)
+2024-01-08 23:25:48,676 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:25:48,676 - __main__ - INFO - Requesting 100 tokens to generate, 2171 tokens in input.
+2024-01-08 23:25:48,676 - __main__ - INFO - Prompt Message:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+a + b = b + a
+[HYPOTHESES] 1
+[HYPOTHESIS] a b : ℕ
+[THEOREMS] 1
+[THEOREM] nat.add_left_comm :  ∀ (n m k : ℕ), n + (m + k) = m + (n + k)
+[THEOREM] nat.add_right_comm :  ∀ (n m k : ℕ), n + m + k = n + k + m
+[THEOREM] nat.add_right_cancel : {n m k : ℕ} (h : n + m = k + m) : n = k
+[END]
+2024-01-08 23:25:50,478 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['apply nat.add_comm,']})
+2024-01-08 23:25:52,291 - __main__ - INFO - Updating policy
+2024-01-08 23:25:52,291 - __main__ - INFO - Policy updated
+2024-01-08 23:25:52,291 - __main__ - INFO - Step 1/60 (Actual steps: 1)
+2024-01-08 23:25:52,291 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:25:52,291 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['end']})
+2024-01-08 23:25:54,063 - __main__ - INFO - Updating policy
+2024-01-08 23:25:54,063 - __main__ - INFO - Policy updated
+2024-01-08 23:25:54,064 - __main__ - INFO - Dumping proof search result:
+ theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+begin
+    apply nat.add_comm,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 5.414930820465088
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1}
+
+
+2024-01-08 23:25:54,072 - __main__ - INFO - Prover for lemma: a_plus_b_b_plus_a in file data/test/lean_proj/src/simple.lean completed.
+2024-01-08 23:25:54,074 - __main__ - INFO - Attempting to prove lemma: a_plus_zero
+2024-01-08 23:25:54,395 - __main__ - INFO - Running the prover agent for lemma: a_plus_zero with timeout: 720 seconds
+2024-01-08 23:25:58,649 - __main__ - INFO - Step 0/60 (Actual steps: 0)
+2024-01-08 23:25:58,649 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:25:58,650 - __main__ - INFO - Requesting 100 tokens to generate, 2163 tokens in input.
+2024-01-08 23:25:58,650 - __main__ - INFO - Prompt Message:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+∀ (a : ℕ), a + 0 = a
+[THEOREMS] 1
+[THEOREM] nat.add_comm :  ∀ n m : ℕ, n + m = m + n | n 0
+[THEOREM] nat.add_assoc :  ∀ n m k : ℕ, (n + m) + k = n + (m + k) | n m 0
+[THEOREM] nat.add_left_cancel :  ∀ {n m k : ℕ}, n + m = n + k → m = k | 0        m k
+[END]
+2024-01-08 23:26:00,429 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['intro a,']})
+2024-01-08 23:26:02,267 - __main__ - INFO - Updating policy
+2024-01-08 23:26:02,267 - __main__ - INFO - Policy updated
+2024-01-08 23:26:02,267 - __main__ - INFO - Step 1/60 (Actual steps: 1)
+2024-01-08 23:26:02,267 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:26:02,269 - __main__ - INFO - Requesting 100 tokens to generate, 2195 tokens in input.
+2024-01-08 23:26:02,269 - __main__ - INFO - Prompt Message:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+a + 0 = a
+[HYPOTHESES] 1
+[HYPOTHESIS] a : ℕ
+[THEOREMS] 1
+[THEOREM] nat.eq_zero_of_add_eq_zero_left : {n m : ℕ} (h : n + m = 0) : m = 0
+[THEOREM] nat.eq_zero_of_add_eq_zero : {n m : ℕ} (H : n + m = 0) : n = 0 ∧ m = 0
+[THEOREM] nat.add_assoc :  ∀ n m k : ℕ, (n + m) + k = n + (m + k) | n m 0
+
+[LAST STEP]
+intro a,
+
+[SUCCESS]
+[END]
+2024-01-08 23:26:04,791 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['refl,']})
+2024-01-08 23:26:06,542 - __main__ - INFO - Updating policy
+2024-01-08 23:26:06,542 - __main__ - INFO - Policy updated
+2024-01-08 23:26:06,542 - __main__ - INFO - Step 2/60 (Actual steps: 2)
+2024-01-08 23:26:06,542 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:26:06,542 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['end']})
+2024-01-08 23:26:08,326 - __main__ - INFO - Updating policy
+2024-01-08 23:26:08,326 - __main__ - INFO - Policy updated
+2024-01-08 23:26:08,326 - __main__ - INFO - Dumping proof search result:
+ theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+begin
+    intro a,
+    refl,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 9.705960273742676
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+2024-01-08 23:26:08,337 - __main__ - INFO - Prover for lemma: a_plus_zero in file data/test/lean_proj/src/simple.lean completed.
+2024-01-08 23:26:08,341 - __main__ - INFO - Attempting to prove lemma: ab_square
+2024-01-08 23:26:08,656 - __main__ - INFO - Running the prover agent for lemma: ab_square with timeout: 720 seconds
+2024-01-08 23:26:13,079 - __main__ - INFO - Step 0/60 (Actual steps: 0)
+2024-01-08 23:26:13,079 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:26:13,080 - __main__ - INFO - Requesting 100 tokens to generate, 2200 tokens in input.
+2024-01-08 23:26:13,080 - __main__ - INFO - Prompt Message:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+∀ (a b : ℝ), (a + b) ^ 2 = a ^ 2 + b ^ 2 + 2 * a * b
+[THEOREMS] 1
+[THEOREM] complex.norm_sq_add_mul_I : (x y : ℝ) : norm_sq (x + y * I) = x ^ 2 + y ^ 2
+[THEOREM] nat.triangle_succ : (n : ℕ) : (n + 1) * ((n + 1) - 1) / 2 = n * (n - 1) / 2 + n
+[THEOREM] complex.add_conj : (z : ℂ) : z + conj z = (2 * z.re : ℝ)
+[END]
+2024-01-08 23:26:14,845 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['intros a b,']})
+2024-01-08 23:26:16,851 - __main__ - INFO - Updating policy
+2024-01-08 23:26:16,851 - __main__ - INFO - Policy updated
+2024-01-08 23:26:16,851 - __main__ - INFO - Step 1/60 (Actual steps: 1)
+2024-01-08 23:26:16,851 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:26:16,853 - __main__ - INFO - Requesting 100 tokens to generate, 2221 tokens in input.
+2024-01-08 23:26:16,853 - __main__ - INFO - Prompt Message:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+(a + b) ^ 2 = a ^ 2 + b ^ 2 + 2 * a * b
+[HYPOTHESES] 1
+[HYPOTHESIS] a b : ℝ
+[THEOREMS] 1
+[THEOREM] complex.norm_sq_add_mul_I : (x y : ℝ) : norm_sq (x + y * I) = x ^ 2 + y ^ 2
+[THEOREM] nat.triangle_succ : (n : ℕ) : (n + 1) * ((n + 1) - 1) / 2 = n * (n - 1) / 2 + n
+[THEOREM] complex.add_conj : (z : ℂ) : z + conj z = (2 * z.re : ℝ)
+
+[LAST STEP]
+intros a b,
+
+[SUCCESS]
+[END]
+2024-01-08 23:26:19,717 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['ring,']})
+2024-01-08 23:26:22,211 - __main__ - INFO - Updating policy
+2024-01-08 23:26:22,212 - __main__ - INFO - Policy updated
+2024-01-08 23:26:22,212 - __main__ - INFO - Step 2/60 (Actual steps: 2)
+2024-01-08 23:26:22,212 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:26:22,212 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['end']})
+2024-01-08 23:26:24,728 - __main__ - INFO - Updating policy
+2024-01-08 23:26:24,728 - __main__ - INFO - Policy updated
+2024-01-08 23:26:24,728 - __main__ - INFO - Dumping proof search result:
+ theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+begin
+    intros a b,
+    ring,
+end
+
+ProofFile: None
+LemmaName: theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 11.678246259689331
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+2024-01-08 23:26:24,742 - __main__ - INFO - Prover for lemma: ab_square in file data/test/lean_proj/src/simple.lean completed.
+2024-01-08 23:26:24,744 - __main__ - INFO - Attempting to prove lemma: mathd_algebra_478
+2024-01-08 23:26:25,072 - __main__ - INFO - Running the prover agent for lemma: mathd_algebra_478 with timeout: 720 seconds
+2024-01-08 23:26:29,796 - __main__ - INFO - Step 0/60 (Actual steps: 0)
+2024-01-08 23:26:29,796 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:26:29,798 - __main__ - INFO - Requesting 100 tokens to generate, 2350 tokens in input.
+2024-01-08 23:26:29,798 - __main__ - INFO - Prompt Message:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+v = 65
+[HYPOTHESES] 1
+[HYPOTHESIS] b h v : ℝ
+[HYPOTHESIS] h₀ : 0 < b ∧ 0 < h ∧ 0 < v
+[HYPOTHESIS] h₁ : v = 1 / 3 * (b * h)
+[HYPOTHESIS] h₂ : b = 30
+[HYPOTHESIS] h₃ : h = 13 / 2
+[THEOREMS] 1
+[THEOREM] norm_digits.digits_succ : (b n m r l)   (e : r + b * m = n)   (hr : r < b)   (h : nat.digits b m = l ∧ 1 < b ∧ 0 < m) :   nat.digits b n = r :: l ∧ 1 < b ∧ 0 < n
+[THEOREM] nnreal.young_inequality : (a b : ℝ≥0) {p q : ℝ≥0} (hp : 1 < p) (hpq : 1 / p + 1 / q = 1) :   a * b ≤ a^(p:ℝ) / p + b^(q:ℝ) / q
+[THEOREM] nat.eq_zero_of_add_eq_zero : {n m : ℕ} (H : n + m = 0) : n = 0 ∧ m = 0
+[END]
+2024-01-08 23:26:33,093 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['rw [h₁, h₂, h₃],']})
+2024-01-08 23:26:35,130 - __main__ - INFO - Updating policy
+2024-01-08 23:26:35,130 - __main__ - INFO - Policy updated
+2024-01-08 23:26:35,130 - __main__ - INFO - Step 1/60 (Actual steps: 1)
+2024-01-08 23:26:35,130 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:26:35,132 - __main__ - INFO - Requesting 100 tokens to generate, 2393 tokens in input.
+2024-01-08 23:26:35,132 - __main__ - INFO - Prompt Message:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+1 / 3 * (30 * (13 / 2)) = 65
+[HYPOTHESES] 1
+[HYPOTHESIS] b h v : ℝ
+[HYPOTHESIS] h₀ : 0 < b ∧ 0 < h ∧ 0 < v
+[HYPOTHESIS] h₁ : v = 1 / 3 * (b * h)
+[HYPOTHESIS] h₂ : b = 30
+[HYPOTHESIS] h₃ : h = 13 / 2
+[THEOREMS] 1
+[THEOREM] norm_digits.digits_succ : (b n m r l)   (e : r + b * m = n)   (hr : r < b)   (h : nat.digits b m = l ∧ 1 < b ∧ 0 < m) :   nat.digits b n = r :: l ∧ 1 < b ∧ 0 < n
+[THEOREM] nnreal.young_inequality : (a b : ℝ≥0) {p q : ℝ≥0} (hp : 1 < p) (hpq : 1 / p + 1 / q = 1) :   a * b ≤ a^(p:ℝ) / p + b^(q:ℝ) / q
+[THEOREM] nat.triangle_succ : (n : ℕ) : (n + 1) * ((n + 1) - 1) / 2 = n * (n - 1) / 2 + n
+
+[LAST STEP]
+rw [h₁, h₂, h₃],
+
+[SUCCESS]
+[END]
+2024-01-08 23:26:37,420 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['norm_num,']})
+2024-01-08 23:26:39,612 - __main__ - INFO - Updating policy
+2024-01-08 23:26:39,612 - __main__ - INFO - Policy updated
+2024-01-08 23:26:39,612 - __main__ - INFO - Step 2/60 (Actual steps: 2)
+2024-01-08 23:26:39,612 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:26:39,612 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['end']})
+2024-01-08 23:26:41,949 - __main__ - INFO - Updating policy
+2024-01-08 23:26:41,949 - __main__ - INFO - Policy updated
+2024-01-08 23:26:41,949 - __main__ - INFO - Dumping proof search result:
+ theorem mathd_algebra_478
+(b h v : ℝ)
+(h₀ : 0 < b ∧ 0 < h ∧ 0 < v)
+(h₁ : v = 1 / 3 * (b * h))
+(h₂ : b = 30)
+(h₃ : h = 13 / 2) :
+v = 65 :=
+begin
+    rw [h₁, h₂, h₃],
+    norm_num,
+end
+
+ProofFile: None
+LemmaName: theorem mathd_algebra_478
+(b h v : ℝ)
+(h₀ : 0 < b ∧ 0 < h ∧ 0 < v)
+(h₁ : v = 1 / 3 * (b * h))
+(h₂ : b = 30)
+(h₃ : h = 13 / 2) :
+v = 65 :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 12.187848806381226
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+2024-01-08 23:26:41,959 - __main__ - INFO - Prover for lemma: mathd_algebra_478 in file data/test/lean_proj/src/simple.lean completed.
+2024-01-08 23:26:41,962 - __main__ - INFO - Attempting to prove lemma: mod_arith_1
+2024-01-08 23:26:42,268 - __main__ - INFO - Running the prover agent for lemma: mod_arith_1 with timeout: 720 seconds
+2024-01-08 23:26:46,807 - __main__ - INFO - Step 0/60 (Actual steps: 0)
+2024-01-08 23:26:46,807 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:26:46,808 - __main__ - INFO - Requesting 100 tokens to generate, 2165 tokens in input.
+2024-01-08 23:26:46,808 - __main__ - INFO - Prompt Message:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+x % 2 = 0 → x * x % 2 = 0
+[HYPOTHESES] 1
+[HYPOTHESIS] x : ℕ
+[THEOREMS] 1
+[THEOREM] complex.sin_two_pi :  sin (2 * π) = 0
+[THEOREM] nat.digits_aux_zero : (b : ℕ) (h : 2 ≤ b) : digits_aux b h 0 = []
+[THEOREM] int.mod_two_ne_one :  ¬ n % 2 = 1 ↔ n % 2 = 0
+[END]
+2024-01-08 23:26:48,399 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['intro h,']})
+2024-01-08 23:26:50,385 - __main__ - INFO - Updating policy
+2024-01-08 23:26:50,385 - __main__ - INFO - Policy updated
+2024-01-08 23:26:50,385 - __main__ - INFO - Step 1/60 (Actual steps: 1)
+2024-01-08 23:26:50,385 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:26:50,387 - __main__ - INFO - Requesting 100 tokens to generate, 2182 tokens in input.
+2024-01-08 23:26:50,387 - __main__ - INFO - Prompt Message:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+x * x % 2 = 0
+[HYPOTHESES] 1
+[HYPOTHESIS] x : ℕ
+[HYPOTHESIS] h : x % 2 = 0
+[THEOREMS] 1
+[THEOREM] complex.sin_two_pi :  sin (2 * π) = 0
+[THEOREM] nat.digits_aux_zero : (b : ℕ) (h : 2 ≤ b) : digits_aux b h 0 = []
+[THEOREM] int.mod_two_ne_one :  ¬ n % 2 = 1 ↔ n % 2 = 0
+
+[LAST STEP]
+intro h,
+
+[SUCCESS]
+[END]
+2024-01-08 23:26:51,494 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['rw h,']})
+2024-01-08 23:26:53,408 - __main__ - INFO - Updating policy
+2024-01-08 23:26:53,408 - __main__ - INFO - Policy updated
+2024-01-08 23:26:53,408 - __main__ - INFO - Step 2/60 (Actual steps: 2)
+2024-01-08 23:26:53,408 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:26:53,411 - __main__ - INFO - Requesting 100 tokens to generate, 2255 tokens in input.
+2024-01-08 23:26:53,411 - __main__ - INFO - Prompt Message:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+x * x % 2 = 0
+[HYPOTHESES] 1
+[HYPOTHESIS] x : ℕ
+[HYPOTHESIS] h : x % 2 = 0
+[THEOREMS] 1
+[THEOREM] complex.sin_two_pi :  sin (2 * π) = 0
+[THEOREM] nat.digits_aux_zero : (b : ℕ) (h : 2 ≤ b) : digits_aux b h 0 = []
+[THEOREM] int.mod_two_ne_one :  ¬ n % 2 = 1 ↔ n % 2 = 0
+
+[STEPS]
+[STEP] intro h,
+
+[LAST STEP]
+rw h,
+
+[ERROR MESSAGE]
+Got error in 'rw h,': 
+ error: rewrite tactic failed, did not find instance of the pattern in the target expression
+  x % 2
+state:
+x : ℕ,
+h : x % 2 = 0
+⊢ x * x % 2 = 0
+[END]
+2024-01-08 23:26:56,311 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['apply int.mod_two_ne_one.mpr,']})
+2024-01-08 23:26:58,304 - __main__ - INFO - Updating policy
+2024-01-08 23:26:58,304 - __main__ - INFO - Policy updated
+2024-01-08 23:26:58,304 - __main__ - INFO - Step 3/60 (Actual steps: 3)
+2024-01-08 23:26:58,304 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:26:58,308 - __main__ - INFO - Requesting 100 tokens to generate, 2265 tokens in input.
+2024-01-08 23:26:58,308 - __main__ - INFO - Prompt Message:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+x * x % 2 = 0
+[HYPOTHESES] 1
+[HYPOTHESIS] x : ℕ
+[HYPOTHESIS] h : x % 2 = 0
+[THEOREMS] 1
+[THEOREM] complex.sin_two_pi :  sin (2 * π) = 0
+[THEOREM] nat.digits_aux_zero : (b : ℕ) (h : 2 ≤ b) : digits_aux b h 0 = []
+[THEOREM] int.mod_two_ne_one :  ¬ n % 2 = 1 ↔ n % 2 = 0
+
+[STEPS]
+[STEP] intro h,
+
+[INCORRECT STEPS]
+[STEP] rw h,
+
+[LAST STEP]
+apply int.mod_two_ne_one.mpr,
+
+[ERROR MESSAGE]
+Got error in 'apply int.mod_two_ne_one....': 
+ error: unknown identifier 'int.mod_two_ne_one'
+state:
+x : ℕ,
+h : x % 2 = 0
+⊢ x * x % 2 = 0
+[END]
+2024-01-08 23:27:00,684 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['rw mul_mod,']})
+2024-01-08 23:27:02,598 - __main__ - INFO - Updating policy
+2024-01-08 23:27:02,598 - __main__ - INFO - Policy updated
+2024-01-08 23:27:02,598 - __main__ - INFO - Step 4/60 (Actual steps: 4)
+2024-01-08 23:27:02,599 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:27:02,604 - __main__ - INFO - Requesting 100 tokens to generate, 2266 tokens in input.
+2024-01-08 23:27:02,604 - __main__ - INFO - Prompt Message:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+x * x % 2 = 0
+[HYPOTHESES] 1
+[HYPOTHESIS] x : ℕ
+[HYPOTHESIS] h : x % 2 = 0
+[THEOREMS] 1
+[THEOREM] complex.sin_two_pi :  sin (2 * π) = 0
+[THEOREM] nat.digits_aux_zero : (b : ℕ) (h : 2 ≤ b) : digits_aux b h 0 = []
+[THEOREM] int.mod_two_ne_one :  ¬ n % 2 = 1 ↔ n % 2 = 0
+
+[STEPS]
+[STEP] intro h,
+
+[INCORRECT STEPS]
+[STEP] apply int.mod_two_ne_one.mpr,
+[STEP] rw h,
+
+[LAST STEP]
+rw mul_mod,
+
+[ERROR MESSAGE]
+Got error in 'rw mul_mod,': 
+ error: unknown identifier 'mul_mod'
+state:
+x : ℕ,
+h : x % 2 = 0
+⊢ x * x % 2 = 0
+[END]
+2024-01-08 23:27:03,459 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['rw h,']})
+2024-01-08 23:27:05,471 - __main__ - INFO - Updating policy
+2024-01-08 23:27:05,471 - __main__ - INFO - Policy updated
+2024-01-08 23:27:05,471 - __main__ - INFO - Step 5/60 (Actual steps: 5)
+2024-01-08 23:27:05,471 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:27:05,471 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.BACKTRACK: 'BACKTRACK'>, language=<Language.LEAN: 'LEAN'>, kwargs={})
+2024-01-08 23:27:05,517 - __main__ - INFO - Step 5/60 (Actual steps: 6)
+2024-01-08 23:27:05,517 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:27:05,519 - __main__ - INFO - Requesting 100 tokens to generate, 2198 tokens in input.
+2024-01-08 23:27:05,519 - __main__ - INFO - Prompt Message:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+x % 2 = 0 → x * x % 2 = 0
+[HYPOTHESES] 1
+[HYPOTHESIS] x : ℕ
+[THEOREMS] 1
+[THEOREM] complex.sin_two_pi :  sin (2 * π) = 0
+[THEOREM] nat.digits_aux_zero : (b : ℕ) (h : 2 ≤ b) : digits_aux b h 0 = []
+[THEOREM] int.mod_two_ne_one :  ¬ n % 2 = 1 ↔ n % 2 = 0
+
+[LAST STEP]
+intro h,
+
+[ERROR MESSAGE]
+The proof-step ultimately leads to goals which eventually don't simplify. Try stepping back with a different proof-step.
+[END]
+2024-01-08 23:27:07,491 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['intro h,']})
+2024-01-08 23:27:09,558 - __main__ - INFO - Updating policy
+2024-01-08 23:27:09,558 - __main__ - INFO - Policy updated
+2024-01-08 23:27:09,558 - __main__ - INFO - Step 6/60 (Actual steps: 7)
+2024-01-08 23:27:09,558 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:27:09,558 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.BACKTRACK: 'BACKTRACK'>, language=<Language.LEAN: 'LEAN'>, kwargs={})
+2024-01-08 23:27:09,605 - __main__ - INFO - Step 6/60 (Actual steps: 8)
+2024-01-08 23:27:09,605 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:27:09,605 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.EXIT: 'EXIT'>, language=<Language.LEAN: 'LEAN'>, kwargs={})
+2024-01-08 23:27:09,605 - __main__ - WARNING - Got EXIT action, exiting
+2024-01-08 23:27:09,605 - __main__ - INFO - Dumping proof search result:
+ theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 8
+SearchTimeInSecs: 22.825841903686523
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 6}
+
+
+2024-01-08 23:27:09,618 - __main__ - INFO - Prover for lemma: mod_arith_1 in file data/test/lean_proj/src/simple.lean completed.
+2024-01-08 23:27:09,621 - __main__ - INFO - Attempting to prove lemma: n_less_2_pow_n
+2024-01-08 23:27:10,414 - __main__ - INFO - Running the prover agent for lemma: n_less_2_pow_n with timeout: 720 seconds
+2024-01-08 23:27:14,811 - __main__ - INFO - Step 0/60 (Actual steps: 0)
+2024-01-08 23:27:14,811 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:27:14,812 - __main__ - INFO - Requesting 100 tokens to generate, 2221 tokens in input.
+2024-01-08 23:27:14,812 - __main__ - INFO - Prompt Message:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+n < 2 ^ n
+[HYPOTHESES] 1
+[HYPOTHESIS] n : ℕ
+[HYPOTHESIS] h₀ : 1 ≤ n
+[THEOREMS] 1
+[THEOREM] nat.fib_lt_fib_succ : {n : ℕ} (hn : 2 ≤ n) : fib n < fib (n + 1)
+[THEOREM] nat.digits_aux_def : (b : ℕ) (h : 2 ≤ b) (n : ℕ) (w : 0 < n) :   digits_aux b h n = n % b :: digits_aux b h (n/b)
+[THEOREM] nat.eq_of_le_of_lt_succ : {n m : ℕ} (h₁ : n ≤ m) (h₂ : m < n + 1) : m = n
+[END]
+2024-01-08 23:27:16,755 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['apply nat.one_lt_pow,']})
+2024-01-08 23:27:18,703 - __main__ - INFO - Updating policy
+2024-01-08 23:27:18,703 - __main__ - INFO - Policy updated
+2024-01-08 23:27:18,703 - __main__ - INFO - Step 1/60 (Actual steps: 1)
+2024-01-08 23:27:18,703 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:27:18,705 - __main__ - INFO - Requesting 100 tokens to generate, 2305 tokens in input.
+2024-01-08 23:27:18,705 - __main__ - INFO - Prompt Message:
+Goals to prove:
+[GOALS]
+[GOAL] 1
+n < 2 ^ n
+[HYPOTHESES] 1
+[HYPOTHESIS] n : ℕ
+[HYPOTHESIS] h₀ : 1 ≤ n
+[THEOREMS] 1
+[THEOREM] nat.fib_lt_fib_succ : {n : ℕ} (hn : 2 ≤ n) : fib n < fib (n + 1)
+[THEOREM] nat.digits_aux_def : (b : ℕ) (h : 2 ≤ b) (n : ℕ) (w : 0 < n) :   digits_aux b h n = n % b :: digits_aux b h (n/b)
+[THEOREM] nat.eq_of_le_of_lt_succ : {n m : ℕ} (h₁ : n ≤ m) (h₂ : m < n + 1) : m = n
+
+[LAST STEP]
+apply nat.one_lt_pow,
+
+[ERROR MESSAGE]
+Got error in 'apply nat.one_lt_pow,': 
+ error: invalid apply tactic, failed to unify
+  n < 2 ^ n
+with
+  1 < ?m_1 ^ ?m_2
+state:
+n : ℕ,
+h₀ : 1 ≤ n
+⊢ n < 2 ^ n
+[END]
+2024-01-08 23:27:20,308 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.RUN_TACTIC: 'RUN_TACTIC'>, language=<Language.LEAN: 'LEAN'>, kwargs={'tactics': ['apply nat.one_lt_pow,']})
+2024-01-08 23:27:22,204 - __main__ - INFO - Updating policy
+2024-01-08 23:27:22,204 - __main__ - INFO - Policy updated
+2024-01-08 23:27:22,204 - __main__ - INFO - Step 2/60 (Actual steps: 2)
+2024-01-08 23:27:22,204 - __main__ - INFO - Asking policy for next action
+2024-01-08 23:27:22,204 - __main__ - INFO - Got Action: ProofAction(action_type=<ActionType.EXIT: 'EXIT'>, language=<Language.LEAN: 'LEAN'>, kwargs={})
+2024-01-08 23:27:22,204 - __main__ - WARNING - Got EXIT action, exiting
+2024-01-08 23:27:22,204 - __main__ - INFO - Dumping proof search result:
+ theorem n_less_2_pow_n
+(n : ℕ)
+(h₀ : 1 ≤ n) :
+n < 2^n :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem n_less_2_pow_n
+(n : ℕ)
+(h₀ : 1 ≤ n) :
+n < 2^n :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 7.42293906211853
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+2024-01-08 23:27:22,213 - __main__ - INFO - Prover for lemma: n_less_2_pow_n in file data/test/lean_proj/src/simple.lean completed.
+2024-01-08 23:27:22,223 - __main__ - INFO - Proof found for lemma: a_plus_b_b_plus_a in file data/test/lean_proj/src/simple.lean
+2024-01-08 23:27:22,223 - __main__ - INFO - Proof found for lemma: a_plus_zero in file data/test/lean_proj/src/simple.lean
+2024-01-08 23:27:22,223 - __main__ - INFO - Proof found for lemma: ab_square in file data/test/lean_proj/src/simple.lean
+2024-01-08 23:27:22,223 - __main__ - INFO - Proof found for lemma: mathd_algebra_478 in file data/test/lean_proj/src/simple.lean
+2024-01-08 23:27:22,223 - __main__ - INFO - Proof not found for lemma: mod_arith_1 in file data/test/lean_proj/src/simple.lean
+2024-01-08 23:27:22,223 - __main__ - INFO - Proof not found for lemma: n_less_2_pow_n in file data/test/lean_proj/src/simple.lean
+2024-01-08 23:27:22,223 - __main__ - INFO - Success rate: 4/6 = 0.6666666666666666 for benchmark: simple_benchmark_lean
+2024-01-08 23:27:22,224 - __main__ - INFO - Finished running experiment: 
+{
+    "env_settings": {
+        "name": "bm25_retrieval",
+        "retrieval_strategy": "BM25"
+    },
+    "prompt_settings": {
+        "name": "lean_dfs",
+        "main_prompt": "data/prompts/system/lean-proof-agent-with-dfs.md",
+        "conv_prompt": "data/prompts/conversation/lean-proof-agent-example-long-conv-dfs.md",
+        "informal_proof_repo": null
+    },
+    "eval_settings": {
+        "name": "n_60_dfs_gpt4_always_retrieve_no_ex",
+        "use_hammer": false,
+        "setting_type": "Agent",
+        "max_proof_depth": 100,
+        "timeout_in_secs": 60,
+        "proof_retries": 1,
+        "max_tokens_per_action": 100,
+        "max_theorems_in_prompt": 3,
+        "gpt_model_name": "gpt-4",
+        "max_number_of_episodes": 1,
+        "max_steps_per_episode": 60,
+        "render": false,
+        "checkpoint_dir": ".log/checkpoints/simple_benchmark_lean/n_60_dfs_gpt4_always_retrieve_no_ex/lean_dfs",
+        "should_checkpoint": false,
+        "temperature": 0.0,
+        "max_history_messages": 0,
+        "policy_name": "Dfs",
+        "proof_dump_dir": ".log/proofs/eval_driver/dfs/simple_benchmark_lean/20240108-232543",
+        "use_human_readable_proof_context": true,
+        "sample": 1.0,
+        "sample_seed": 3840,
+        "use_example_retrieval": false,
+        "always_use_useful_theorem_retrieval": true,
+        "num_goal_per_prompt": null
+    },
+    "benchmark": {
+        "name": "simple_benchmark_lean",
+        "num_files": 2,
+        "language": "LEAN",
+        "datasets": [
+            {
+                "project": "data/test/lean_proj",
+                "files": [
+                    {
+                        "path": "src/simple.lean",
+                        "theorems": [
+                            "a_plus_b_b_plus_a",
+                            "a_plus_zero",
+                            "ab_square",
+                            "mathd_algebra_478",
+                            "mod_arith_1",
+                            "n_less_2_pow_n"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "few_shot_data_path_for_retrieval": null,
+        "few_shot_metadata_filename_for_retrieval": null,
+        "dfs_data_path_for_retrieval": null,
+        "dfs_metadata_filename_for_retrieval": null
+    }
+}

@@ -1,0 +1,259 @@
+2024-01-15 20:58:13,956 - __main__ - INFO - Pid: 13622
+2024-01-15 20:58:13,957 - __main__ - INFO - Running Experiment: {
+    "env_settings": {
+        "name": "bm25_retrieval",
+        "retrieval_strategy": "BM25"
+    },
+    "prompt_settings": {
+        "name": "lean_few_shot_informal",
+        "main_prompt": "data/prompts/baseline/simple-prompt-lean-informal.md",
+        "conv_prompt": "data/prompts/baseline/simple-prompt-conv-lean-informal.md",
+        "informal_proof_repo": null
+    },
+    "eval_settings": {
+        "name": "n_4_informal_gpt4_turbo",
+        "use_hammer": false,
+        "setting_type": "Agent",
+        "max_proof_depth": 100,
+        "timeout_in_secs": 60,
+        "proof_retries": 1,
+        "max_tokens_per_action": 1000,
+        "max_theorems_in_prompt": 7,
+        "gpt_model_name": "gpt-4-1106-preview",
+        "max_number_of_episodes": 1,
+        "max_steps_per_episode": 4,
+        "render": false,
+        "checkpoint_dir": ".log/checkpoints",
+        "should_checkpoint": false,
+        "temperature": 0.0,
+        "max_history_messages": 0,
+        "policy_name": "InformalFewShot",
+        "proof_dump_dir": ".log/proofs/eval_driver/informal_few_shot/gpt4",
+        "use_human_readable_proof_context": true,
+        "sample": 1.0,
+        "sample_seed": 3840,
+        "use_example_retrieval": false,
+        "always_use_useful_theorem_retrieval": false,
+        "num_goal_per_prompt": null
+    },
+    "benchmark": {
+        "name": "miniF2F_test",
+        "num_files": 1,
+        "language": "LEAN",
+        "datasets": [
+            {
+                "project": "data/benchmarks/miniF2F",
+                "files": [
+                    {
+                        "path": "lean/src/test.lean",
+                        "theorems": "*"
+                    }
+                ]
+            }
+        ],
+        "few_shot_data_path_for_retrieval": null,
+        "few_shot_metadata_filename_for_retrieval": null,
+        "dfs_data_path_for_retrieval": null,
+        "dfs_metadata_filename_for_retrieval": null
+    }
+}
+2024-01-15 20:58:13,971 - __main__ - INFO - Getting all lemmas in file: data/benchmarks/miniF2F/lean/src/test.lean with timeout: 300000 seconds
+2024-01-15 20:58:27,182 - __main__ - INFO - Discovered 244 lemmas
+2024-01-15 20:58:27,187 - __main__ - INFO - Discovered 244 lemmas to prove in data/benchmarks/miniF2F/lean/src/test.lean
+2024-01-15 20:58:27,187 - __main__ - INFO - Lemmas to prove in file data/benchmarks/miniF2F/lean/src/test.lean: 
+['mathd_algebra_478', 'numbertheory_4x3m7y3neq2003', 'aime_1983_p1', 'amc12_2001_p5', 'mathd_algebra_141', 'mathd_numbertheory_3', 'imo_1969_p2', 'mathd_algebra_209', 'mathd_numbertheory_1124', 'imo_1983_p6', 'mathd_numbertheory_237', 'mathd_algebra_33', 'amc12b_2021_p3', 'mathd_numbertheory_299', 'amc12b_2020_p2', 'algebra_sqineq_unitcircatbpabsamblt1', 'imo_1977_p6', 'mathd_algebra_419', 'amc12a_2020_p10', 'imo_1960_p2', 'mathd_numbertheory_427', 'numbertheory_x5neqy2p4', 'imosl_2007_algebra_p6', 'mathd_algebra_398', 'imo_1963_p5', 'mathd_numbertheory_430', 'mathd_algebra_459', 'induction_12dvd4expnp1p20', 'mathd_algebra_320', 'mathd_algebra_137', 'imo_1997_p5', 'mathd_numbertheory_277', 'mathd_numbertheory_559', 'mathd_algebra_160', 'mathd_algebra_24', 'mathd_algebra_176', 'induction_nfactltnexpnm1ngt3', 'mathd_algebra_208', 'mathd_numbertheory_353', 'numbertheory_notequiv2i2jasqbsqdiv8', 'mathd_algebra_156', 'mathd_numbertheory_12', 'mathd_numbertheory_345', 'mathd_numbertheory_447', 'mathd_numbertheory_328', 'mathd_numbertheory_451', 'aime_1997_p9', 'algebra_sqineq_at2malt1', 'algebra_apbmpcneq0_aeq0anbeq0anceq0', 'mathd_algebra_171', 'mathd_numbertheory_227', 'mathd_algebra_188', 'mathd_numbertheory_765', 'imo_1959_p1', 'mathd_numbertheory_175', 'induction_sumkexp3eqsumksq', 'numbertheory_fxeq4powxp6powxp9powx_f2powmdvdf2pown', 'imo_1992_p1', 'imo_1982_p1', 'aime_1987_p5', 'mathd_algebra_346', 'mathd_algebra_487', 'mathd_numbertheory_728', 'mathd_algebra_184', 'mathd_numbertheory_552', 'amc12b_2021_p9', 'aime_1994_p3', 'mathd_algebra_44', 'mathd_algebra_215', 'mathd_numbertheory_293', 'mathd_numbertheory_769', 'mathd_algebra_452', 'mathd_numbertheory_5', 'mathd_numbertheory_207', 'mathd_numbertheory_342', 'mathd_numbertheory_483', 'amc12b_2020_p21', 'amc12a_2003_p5', 'mathd_numbertheory_495', 'mathd_algebra_296', 'algebra_abpbcpcageq3_sumaonsqrtapbgeq3onsqrt2', 'algebra_2varlineareq_fp3zeq11_3tfm1m5zeqn68_feqn10_zeq7', 'mathd_numbertheory_247', 'induction_pord1p1on2powklt5on2', 'mathd_algebra_107', 'numbertheory_2pownm1prime_nprime', 'mathd_algebra_412', 'amc12a_2013_p4', 'mathd_algebra_392', 'mathd_numbertheory_314', 'induction_prod1p1onk3le3m1onn', 'mathd_numbertheory_343', 'mathd_algebra_756', 'amc12b_2002_p7', 'mathd_algebra_80', 'mathd_numbertheory_457', 'amc12_2000_p12', 'mathd_numbertheory_135', 'mathd_algebra_275', 'mathd_algebra_388', 'amc12a_2020_p7', 'imo_1981_p6', 'mathd_algebra_263', 'mathd_numbertheory_34', 'mathd_numbertheory_764', 'amc12b_2021_p4', 'imo_1962_p2', 'mathd_algebra_170', 'mathd_algebra_432', 'mathd_algebra_598', 'algebra_bleqa_apbon2msqrtableqambsqon8b', 'mathd_algebra_276', 'amc12a_2021_p14', 'algebra_sum1onsqrt2to1onsqrt10000lt198', 'mathd_numbertheory_618', 'amc12a_2020_p4', 'amc12b_2020_p6', 'mathd_numbertheory_435', 'algebra_others_exirrpowirrrat', 'mathd_algebra_427', 'mathd_algebra_76', 'mathd_numbertheory_99', 'algebra_9onxpypzleqsum2onxpy', 'mathd_numbertheory_233', 'algebra_absapbon1pabsapbleqsumabsaon1pabsa', 'imo_1984_p6', 'imo_2001_p6', 'mathd_numbertheory_321', 'mathd_algebra_17', 'mathd_algebra_153', 'algebra_sqineq_unitcircatbpamblt1', 'amc12a_2021_p18', 'mathd_algebra_329', 'induction_pprime_pdvdapowpma', 'amc12a_2021_p9', 'aime_1984_p1', 'amc12a_2021_p22', 'mathd_numbertheory_229', 'mathd_numbertheory_100', 'mathd_algebra_313', 'amc12b_2002_p4', 'amc12a_2002_p6', 'amc12a_2003_p23', 'mathd_algebra_129', 'amc12b_2021_p18', 'mathd_algebra_484', 'mathd_numbertheory_551', 'mathd_algebra_304', 'amc12a_2021_p8', 'algebra_ineq_nto1onlt2m1on', 'amc12b_2002_p19', 'mathd_numbertheory_341', 'mathd_numbertheory_711', 'amc12b_2020_p22', 'mathd_algebra_113', 'amc12a_2020_p9', 'amc12_2000_p1', 'amc12a_2021_p19', 'algebra_amgm_sumasqdivbgeqsuma', 'mathd_numbertheory_212', 'mathd_numbertheory_320', 'mathd_algebra_125', 'induction_1pxpownlt1pnx', 'mathd_algebra_148', 'amc12a_2019_p12', 'induction_11div10tonmn1ton', 'algebra_amgm_sum1toneqn_prod1tonleq1', 'imo_1985_p6', 'amc12a_2020_p15', 'mathd_algebra_332', 'algebra_cubrtrp1oncubrtreq3_rcubp1onrcubeq5778', 'mathd_algebra_293', 'mathd_algebra_440', 'mathd_numbertheory_254', 'amc12_2000_p6', 'aime_1988_p8', 'mathd_algebra_114', 'imo_2019_p1', 'mathd_algebra_513', 'mathd_algebra_143', 'mathd_algebra_354', 'aime_1984_p7', 'mathd_algebra_246', 'aime_1983_p3', 'numbertheory_3pow2pownm1mod2pownp3eq2pownp2', 'mathd_numbertheory_85', 'amc12_2001_p21', 'mathd_numbertheory_239', 'amc12b_2002_p2', 'mathd_algebra_196', 'mathd_algebra_342', 'mathd_numbertheory_517', 'amc12a_2009_p7', 'mathd_algebra_270', 'amc12a_2021_p12', 'mathd_algebra_362', 'mathd_numbertheory_521', 'amc12a_2002_p13', 'imo_1964_p2', 'mathd_algebra_289', 'amc12a_2021_p3', 'amc12a_2008_p25', 'algebra_apbpceq2_abpbcpcaeq1_aleq1on3anbleq1ancleq4on3', 'mathd_numbertheory_66', 'amc12b_2021_p1', 'algebra_apbon2pownleqapownpbpowon2', 'imo_1968_p5_1', 'aime_1990_p15', 'mathd_numbertheory_235', 'amc12b_2020_p13', 'amc12b_2021_p13', 'mathd_numbertheory_234', 'numbertheory_aoddbdiv4asqpbsqmod8eq1', 'mathd_numbertheory_222', 'aime_1999_p11', 'mathd_algebra_359', 'imo_1965_p2', 'mathd_algebra_288', 'mathd_numbertheory_127', 'imo_1974_p3', 'aime_1991_p9', 'amc12a_2009_p6', 'mathd_algebra_158', 'algebra_absxm1pabsxpabsxp1eqxp2_0leqxleq1', 'aime_1990_p4', 'mathd_numbertheory_541', 'mathd_algebra_314', 'amc12_2000_p20', 'mathd_algebra_302', 'aime_1983_p2', 'mathd_algebra_139', 'amc12a_2021_p25', 'amc12a_2020_p25', 'mathd_numbertheory_150', 'aime_1989_p8', 'mathd_numbertheory_296', 'mathd_algebra_142', 'numbertheory_exk2powkeqapb2mulbpa2_aeq1', 'mathd_algebra_400', 'aime_1995_p7', 'mathd_numbertheory_185', 'mathd_algebra_441', 'mathd_numbertheory_582', 'mathd_algebra_338']
+2024-01-15 20:58:27,187 - __main__ - INFO - Attempting to prove lemma: aime_1983_p1
+2024-01-15 20:58:27,543 - __main__ - INFO - Running the prover agent for lemma: aime_1983_p1 with timeout: 720 seconds
+2024-01-15 20:58:43,771 - __main__ - INFO - Step 0/4 (Actual steps: 0)
+2024-01-15 20:58:43,771 - __main__ - INFO - Asking policy for next action
+2024-01-15 20:58:43,771 - __main__ - ERROR - Exception occurred while proving lemma: aime_1983_p1 in file data/benchmarks/miniF2F/lean/src/test.lean
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 246, in _run_prover
+    agent.run_episodes_till_stop(
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 58, in run_episodes_till_stop
+    self._run_episode_as_per_policy(env, stop_policy, policy_info_message, render)
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 75, in _run_episode_as_per_policy
+    action = self._policy(next_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/baselines/gpt4/informal_few_shot_policy.py", line 98, in __call__
+    theorem_stmt, _ = self.informal_proof_repo.get_informal_thm_proof(self.lemma_name)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/tools/informal_proof_repo.py", line 21, in get_informal_thm_proof
+    return self.repo_map[theorem_name]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'aime_1983_p1'
+2024-01-15 20:58:43,778 - __main__ - INFO - Failed to prove lemma: aime_1983_p1 in file data/benchmarks/miniF2F/lean/src/test.lean
+2024-01-15 20:58:43,779 - __main__ - INFO - Attempting to prove lemma: aime_1983_p2
+2024-01-15 20:58:43,976 - __main__ - INFO - Running the prover agent for lemma: aime_1983_p2 with timeout: 720 seconds
+2024-01-15 20:59:50,208 - __main__ - INFO - Step 0/4 (Actual steps: 0)
+2024-01-15 20:59:50,208 - __main__ - INFO - Asking policy for next action
+2024-01-15 20:59:50,209 - __main__ - ERROR - Exception occurred while proving lemma: aime_1983_p2 in file data/benchmarks/miniF2F/lean/src/test.lean
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 246, in _run_prover
+    agent.run_episodes_till_stop(
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 58, in run_episodes_till_stop
+    self._run_episode_as_per_policy(env, stop_policy, policy_info_message, render)
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 75, in _run_episode_as_per_policy
+    action = self._policy(next_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/baselines/gpt4/informal_few_shot_policy.py", line 98, in __call__
+    theorem_stmt, _ = self.informal_proof_repo.get_informal_thm_proof(self.lemma_name)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/tools/informal_proof_repo.py", line 21, in get_informal_thm_proof
+    return self.repo_map[theorem_name]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'aime_1983_p2'
+2024-01-15 20:59:50,217 - __main__ - INFO - Failed to prove lemma: aime_1983_p2 in file data/benchmarks/miniF2F/lean/src/test.lean
+2024-01-15 20:59:50,220 - __main__ - INFO - Attempting to prove lemma: aime_1983_p3
+2024-01-15 20:59:50,413 - __main__ - INFO - Running the prover agent for lemma: aime_1983_p3 with timeout: 720 seconds
+2024-01-15 21:00:40,924 - __main__ - INFO - Step 0/4 (Actual steps: 0)
+2024-01-15 21:00:40,924 - __main__ - INFO - Asking policy for next action
+2024-01-15 21:00:40,924 - __main__ - ERROR - Exception occurred while proving lemma: aime_1983_p3 in file data/benchmarks/miniF2F/lean/src/test.lean
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 246, in _run_prover
+    agent.run_episodes_till_stop(
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 58, in run_episodes_till_stop
+    self._run_episode_as_per_policy(env, stop_policy, policy_info_message, render)
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 75, in _run_episode_as_per_policy
+    action = self._policy(next_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/baselines/gpt4/informal_few_shot_policy.py", line 98, in __call__
+    theorem_stmt, _ = self.informal_proof_repo.get_informal_thm_proof(self.lemma_name)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/tools/informal_proof_repo.py", line 21, in get_informal_thm_proof
+    return self.repo_map[theorem_name]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'aime_1983_p3'
+2024-01-15 21:00:40,931 - __main__ - INFO - Failed to prove lemma: aime_1983_p3 in file data/benchmarks/miniF2F/lean/src/test.lean
+2024-01-15 21:00:40,932 - __main__ - INFO - Attempting to prove lemma: aime_1984_p1
+2024-01-15 21:00:41,118 - __main__ - INFO - Running the prover agent for lemma: aime_1984_p1 with timeout: 720 seconds
+2024-01-15 21:01:15,730 - __main__ - INFO - Step 0/4 (Actual steps: 0)
+2024-01-15 21:01:15,730 - __main__ - INFO - Asking policy for next action
+2024-01-15 21:01:15,730 - __main__ - ERROR - Exception occurred while proving lemma: aime_1984_p1 in file data/benchmarks/miniF2F/lean/src/test.lean
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 246, in _run_prover
+    agent.run_episodes_till_stop(
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 58, in run_episodes_till_stop
+    self._run_episode_as_per_policy(env, stop_policy, policy_info_message, render)
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 75, in _run_episode_as_per_policy
+    action = self._policy(next_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/baselines/gpt4/informal_few_shot_policy.py", line 98, in __call__
+    theorem_stmt, _ = self.informal_proof_repo.get_informal_thm_proof(self.lemma_name)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/tools/informal_proof_repo.py", line 21, in get_informal_thm_proof
+    return self.repo_map[theorem_name]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'aime_1984_p1'
+2024-01-15 21:01:15,736 - __main__ - INFO - Failed to prove lemma: aime_1984_p1 in file data/benchmarks/miniF2F/lean/src/test.lean
+2024-01-15 21:01:15,738 - __main__ - INFO - Attempting to prove lemma: aime_1984_p7
+2024-01-15 21:01:15,946 - __main__ - INFO - Running the prover agent for lemma: aime_1984_p7 with timeout: 720 seconds
+2024-01-15 21:02:06,622 - __main__ - INFO - Step 0/4 (Actual steps: 0)
+2024-01-15 21:02:06,623 - __main__ - INFO - Asking policy for next action
+2024-01-15 21:02:06,623 - __main__ - ERROR - Exception occurred while proving lemma: aime_1984_p7 in file data/benchmarks/miniF2F/lean/src/test.lean
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 246, in _run_prover
+    agent.run_episodes_till_stop(
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 58, in run_episodes_till_stop
+    self._run_episode_as_per_policy(env, stop_policy, policy_info_message, render)
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 75, in _run_episode_as_per_policy
+    action = self._policy(next_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/baselines/gpt4/informal_few_shot_policy.py", line 98, in __call__
+    theorem_stmt, _ = self.informal_proof_repo.get_informal_thm_proof(self.lemma_name)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/tools/informal_proof_repo.py", line 21, in get_informal_thm_proof
+    return self.repo_map[theorem_name]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'aime_1984_p7'
+2024-01-15 21:02:06,629 - __main__ - INFO - Failed to prove lemma: aime_1984_p7 in file data/benchmarks/miniF2F/lean/src/test.lean
+2024-01-15 21:02:06,630 - __main__ - INFO - Attempting to prove lemma: aime_1987_p5
+2024-01-15 21:02:06,932 - __main__ - INFO - Running the prover agent for lemma: aime_1987_p5 with timeout: 720 seconds
+2024-01-15 21:02:26,143 - __main__ - INFO - Step 0/4 (Actual steps: 0)
+2024-01-15 21:02:26,144 - __main__ - INFO - Asking policy for next action
+2024-01-15 21:02:26,144 - __main__ - ERROR - Exception occurred while proving lemma: aime_1987_p5 in file data/benchmarks/miniF2F/lean/src/test.lean
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 246, in _run_prover
+    agent.run_episodes_till_stop(
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 58, in run_episodes_till_stop
+    self._run_episode_as_per_policy(env, stop_policy, policy_info_message, render)
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 75, in _run_episode_as_per_policy
+    action = self._policy(next_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/baselines/gpt4/informal_few_shot_policy.py", line 98, in __call__
+    theorem_stmt, _ = self.informal_proof_repo.get_informal_thm_proof(self.lemma_name)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/tools/informal_proof_repo.py", line 21, in get_informal_thm_proof
+    return self.repo_map[theorem_name]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'aime_1987_p5'
+2024-01-15 21:02:26,153 - __main__ - INFO - Failed to prove lemma: aime_1987_p5 in file data/benchmarks/miniF2F/lean/src/test.lean
+2024-01-15 21:02:26,156 - __main__ - INFO - Attempting to prove lemma: aime_1988_p8
+2024-01-15 21:02:26,373 - __main__ - INFO - Running the prover agent for lemma: aime_1988_p8 with timeout: 720 seconds
+2024-01-15 21:03:12,765 - __main__ - INFO - Step 0/4 (Actual steps: 0)
+2024-01-15 21:03:12,765 - __main__ - INFO - Asking policy for next action
+2024-01-15 21:03:12,765 - __main__ - ERROR - Exception occurred while proving lemma: aime_1988_p8 in file data/benchmarks/miniF2F/lean/src/test.lean
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 246, in _run_prover
+    agent.run_episodes_till_stop(
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 58, in run_episodes_till_stop
+    self._run_episode_as_per_policy(env, stop_policy, policy_info_message, render)
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 75, in _run_episode_as_per_policy
+    action = self._policy(next_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/baselines/gpt4/informal_few_shot_policy.py", line 98, in __call__
+    theorem_stmt, _ = self.informal_proof_repo.get_informal_thm_proof(self.lemma_name)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/tools/informal_proof_repo.py", line 21, in get_informal_thm_proof
+    return self.repo_map[theorem_name]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'aime_1988_p8'
+2024-01-15 21:03:12,773 - __main__ - INFO - Failed to prove lemma: aime_1988_p8 in file data/benchmarks/miniF2F/lean/src/test.lean
+2024-01-15 21:03:12,776 - __main__ - INFO - Attempting to prove lemma: aime_1989_p8
+2024-01-15 21:03:12,956 - __main__ - INFO - Running the prover agent for lemma: aime_1989_p8 with timeout: 720 seconds
+2024-01-15 21:04:17,192 - __main__ - ERROR - Exception occurred. Retrying 0 more times.
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 375, in eval_benchmark
+    eval_dataset(env_settings, benchmark, prompt_settings, dataset, eval_settings, checkpoint_info, eval_proof_results, logger=logger)
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 273, in eval_dataset
+    p.join(timeout)
+  File "/home/run001122/miniconda3/envs/copra/lib/python3.11/multiprocessing/process.py", line 149, in join
+    res = self._popen.wait(timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/miniconda3/envs/copra/lib/python3.11/multiprocessing/popen_fork.py", line 40, in wait
+    if not wait([self.sentinel], timeout):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/miniconda3/envs/copra/lib/python3.11/multiprocessing/connection.py", line 947, in wait
+    ready = selector.select(timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/miniconda3/envs/copra/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+2024-01-15 21:04:17,224 - __main__ - ERROR - Exception occurred while proving lemma: aime_1989_p8 in file data/benchmarks/miniF2F/lean/src/test.lean
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 246, in _run_prover
+    agent.run_episodes_till_stop(
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 58, in run_episodes_till_stop
+    self._run_episode_as_per_policy(env, stop_policy, policy_info_message, render)
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 66, in _run_episode_as_per_policy
+    env.reset()
+  File "/home/run001122/GPT_LEAN/copra/src/rl/simple_proof_env.py", line 188, in reset
+    self._foward_to_lemma_proof()
+  File "/home/run001122/GPT_LEAN/copra/src/rl/simple_proof_env.py", line 492, in _foward_to_lemma_proof
+    self._dynamic_proof_executor.skip_to_theorem(self.lemma_name)
+  File "/home/run001122/GPT_LEAN/copra/src/tools/dynamic_lean_proof_exec.py", line 206, in skip_to_theorem
+    self._skip_to_theorem(theorem_name)
+  File "/home/run001122/GPT_LEAN/copra/src/tools/lean_cmd_executor.py", line 634, in _skip_to_theorem
+    self._run_stmt_on_lean_server(idx, stmt)
+  File "/home/run001122/GPT_LEAN/copra/src/tools/lean_cmd_executor.py", line 538, in _run_stmt_on_lean_server
+    response = self.lean_server.run(self.temp_file, self.timeout_in_sec)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/lean_server/lean_cmd_server.py", line 54, in run
+    self.process.wait(timeout=timeout_in_secs)
+  File "/home/run001122/miniconda3/envs/copra/lib/python3.11/subprocess.py", line 1264, in wait
+    return self._wait(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/miniconda3/envs/copra/lib/python3.11/subprocess.py", line 2040, in _wait
+    time.sleep(delay)
+KeyboardInterrupt

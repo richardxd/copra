@@ -1,0 +1,317 @@
+2024-01-15 21:14:02,464 - __main__ - INFO - Pid: 19666
+2024-01-15 21:14:02,465 - __main__ - INFO - Running Experiment: {
+    "env_settings": {
+        "name": "bm25_retrieval",
+        "retrieval_strategy": "BM25"
+    },
+    "prompt_settings": {
+        "name": "lean_few_shot_informal_to_formal_dfs_gpt4_turbo",
+        "main_prompt": "data/prompts/system/lean-proof-agent-with-dfs-and-informal.md",
+        "conv_prompt": "data/prompts/conversation/lean-proof-agent-example-long-conv-dfs-and-informal.md",
+        "informal_proof_repo": ".log/proofs/eval_driver/informal_few_shot/gpt4/simple_benchmark_lean/20240115-210441/informal_proofs"
+    },
+    "eval_settings": {
+        "name": "n_60_dfs_gpt4_always_retrieve_no_ex",
+        "use_hammer": false,
+        "setting_type": "Agent",
+        "max_proof_depth": 100,
+        "timeout_in_secs": 60,
+        "proof_retries": 1,
+        "max_tokens_per_action": 100,
+        "max_theorems_in_prompt": 3,
+        "gpt_model_name": "gpt-4",
+        "max_number_of_episodes": 1,
+        "max_steps_per_episode": 60,
+        "render": false,
+        "checkpoint_dir": ".log/checkpoints",
+        "should_checkpoint": false,
+        "temperature": 0.0,
+        "max_history_messages": 0,
+        "policy_name": "Dfs",
+        "proof_dump_dir": ".log/proofs/eval_driver/dfs",
+        "use_human_readable_proof_context": true,
+        "sample": 1.0,
+        "sample_seed": 3840,
+        "use_example_retrieval": false,
+        "always_use_useful_theorem_retrieval": true,
+        "num_goal_per_prompt": null
+    },
+    "benchmark": {
+        "name": "simple_benchmark_lean",
+        "num_files": 2,
+        "language": "LEAN",
+        "datasets": [
+            {
+                "project": "data/test/lean_proj",
+                "files": [
+                    {
+                        "path": "src/simple.lean",
+                        "theorems": "*"
+                    }
+                ]
+            }
+        ],
+        "few_shot_data_path_for_retrieval": null,
+        "few_shot_metadata_filename_for_retrieval": null,
+        "dfs_data_path_for_retrieval": null,
+        "dfs_metadata_filename_for_retrieval": null
+    }
+}
+2024-01-15 21:14:02,476 - __main__ - INFO - Getting all lemmas in file: data/test/lean_proj/src/simple.lean with timeout: 300000 seconds
+2024-01-15 21:14:03,101 - __main__ - INFO - Discovered 6 lemmas
+2024-01-15 21:14:03,105 - __main__ - INFO - Discovered 6 lemmas to prove in data/test/lean_proj/src/simple.lean
+2024-01-15 21:14:03,106 - __main__ - INFO - Lemmas to prove in file data/test/lean_proj/src/simple.lean: 
+['a_plus_b_b_plus_a', 'mod_arith_1', 'n_less_2_pow_n', 'a_plus_zero', 'mathd_algebra_478', 'ab_square']
+2024-01-15 21:14:03,106 - __main__ - INFO - Attempting to prove lemma: a_plus_b_b_plus_a
+2024-01-15 21:14:03,744 - __main__ - INFO - Running the prover agent for lemma: a_plus_b_b_plus_a with timeout: 720 seconds
+2024-01-15 21:14:07,980 - __main__ - INFO - Step 0/60 (Actual steps: 0)
+2024-01-15 21:14:07,980 - __main__ - INFO - Asking policy for next action
+2024-01-15 21:14:07,981 - __main__ - ERROR - Exception occurred while proving lemma: a_plus_b_b_plus_a in file data/test/lean_proj/src/simple.lean
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 246, in _run_prover
+    agent.run_episodes_till_stop(
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 58, in run_episodes_till_stop
+    self._run_episode_as_per_policy(env, stop_policy, policy_info_message, render)
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 75, in _run_episode_as_per_policy
+    action = self._policy(next_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/gpt_guided_tree_search_policy.py", line 201, in __call__
+    action = self._policy_prompter(tree_search_action)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 476, in __call__
+    responses = self.run_prompt(gpt_response)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 328, in run_prompt
+    prompt_message, prompt_token_count, custom_system_msg, custom_system_msg_cnt = self._get_prompt_message(request, max_tokens_in_prompt)
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 195, in _get_prompt_message
+    request.informal_theorem, request.informal_proof = self.informal_proof_repo.get_informal_thm_proof(self.lemma_name)
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/tools/informal_proof_repo.py", line 21, in get_informal_thm_proof
+    return self.repo_map[theorem_name]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'a_plus_b_b_plus_a'
+2024-01-15 21:14:07,987 - __main__ - INFO - Failed to prove lemma: a_plus_b_b_plus_a in file data/test/lean_proj/src/simple.lean
+2024-01-15 21:14:07,988 - __main__ - INFO - Attempting to prove lemma: a_plus_zero
+2024-01-15 21:14:08,204 - __main__ - INFO - Running the prover agent for lemma: a_plus_zero with timeout: 720 seconds
+2024-01-15 21:14:12,537 - __main__ - INFO - Step 0/60 (Actual steps: 0)
+2024-01-15 21:14:12,537 - __main__ - INFO - Asking policy for next action
+2024-01-15 21:14:12,538 - __main__ - ERROR - Exception occurred while proving lemma: a_plus_zero in file data/test/lean_proj/src/simple.lean
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 246, in _run_prover
+    agent.run_episodes_till_stop(
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 58, in run_episodes_till_stop
+    self._run_episode_as_per_policy(env, stop_policy, policy_info_message, render)
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 75, in _run_episode_as_per_policy
+    action = self._policy(next_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/gpt_guided_tree_search_policy.py", line 201, in __call__
+    action = self._policy_prompter(tree_search_action)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 476, in __call__
+    responses = self.run_prompt(gpt_response)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 328, in run_prompt
+    prompt_message, prompt_token_count, custom_system_msg, custom_system_msg_cnt = self._get_prompt_message(request, max_tokens_in_prompt)
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 195, in _get_prompt_message
+    request.informal_theorem, request.informal_proof = self.informal_proof_repo.get_informal_thm_proof(self.lemma_name)
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/tools/informal_proof_repo.py", line 21, in get_informal_thm_proof
+    return self.repo_map[theorem_name]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'a_plus_zero'
+2024-01-15 21:14:12,545 - __main__ - INFO - Failed to prove lemma: a_plus_zero in file data/test/lean_proj/src/simple.lean
+2024-01-15 21:14:12,546 - __main__ - INFO - Attempting to prove lemma: ab_square
+2024-01-15 21:14:12,746 - __main__ - INFO - Running the prover agent for lemma: ab_square with timeout: 720 seconds
+2024-01-15 21:14:17,136 - __main__ - INFO - Step 0/60 (Actual steps: 0)
+2024-01-15 21:14:17,136 - __main__ - INFO - Asking policy for next action
+2024-01-15 21:14:17,136 - __main__ - ERROR - Exception occurred while proving lemma: ab_square in file data/test/lean_proj/src/simple.lean
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 246, in _run_prover
+    agent.run_episodes_till_stop(
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 58, in run_episodes_till_stop
+    self._run_episode_as_per_policy(env, stop_policy, policy_info_message, render)
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 75, in _run_episode_as_per_policy
+    action = self._policy(next_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/gpt_guided_tree_search_policy.py", line 201, in __call__
+    action = self._policy_prompter(tree_search_action)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 476, in __call__
+    responses = self.run_prompt(gpt_response)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 328, in run_prompt
+    prompt_message, prompt_token_count, custom_system_msg, custom_system_msg_cnt = self._get_prompt_message(request, max_tokens_in_prompt)
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 195, in _get_prompt_message
+    request.informal_theorem, request.informal_proof = self.informal_proof_repo.get_informal_thm_proof(self.lemma_name)
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/tools/informal_proof_repo.py", line 21, in get_informal_thm_proof
+    return self.repo_map[theorem_name]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'ab_square'
+2024-01-15 21:14:17,143 - __main__ - INFO - Failed to prove lemma: ab_square in file data/test/lean_proj/src/simple.lean
+2024-01-15 21:14:17,144 - __main__ - INFO - Attempting to prove lemma: mathd_algebra_478
+2024-01-15 21:14:17,334 - __main__ - INFO - Running the prover agent for lemma: mathd_algebra_478 with timeout: 720 seconds
+2024-01-15 21:14:21,555 - __main__ - INFO - Step 0/60 (Actual steps: 0)
+2024-01-15 21:14:21,555 - __main__ - INFO - Asking policy for next action
+2024-01-15 21:14:21,555 - __main__ - ERROR - Exception occurred while proving lemma: mathd_algebra_478 in file data/test/lean_proj/src/simple.lean
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 246, in _run_prover
+    agent.run_episodes_till_stop(
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 58, in run_episodes_till_stop
+    self._run_episode_as_per_policy(env, stop_policy, policy_info_message, render)
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 75, in _run_episode_as_per_policy
+    action = self._policy(next_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/gpt_guided_tree_search_policy.py", line 201, in __call__
+    action = self._policy_prompter(tree_search_action)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 476, in __call__
+    responses = self.run_prompt(gpt_response)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 328, in run_prompt
+    prompt_message, prompt_token_count, custom_system_msg, custom_system_msg_cnt = self._get_prompt_message(request, max_tokens_in_prompt)
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 195, in _get_prompt_message
+    request.informal_theorem, request.informal_proof = self.informal_proof_repo.get_informal_thm_proof(self.lemma_name)
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/tools/informal_proof_repo.py", line 21, in get_informal_thm_proof
+    return self.repo_map[theorem_name]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'mathd_algebra_478'
+2024-01-15 21:14:21,562 - __main__ - INFO - Failed to prove lemma: mathd_algebra_478 in file data/test/lean_proj/src/simple.lean
+2024-01-15 21:14:21,564 - __main__ - INFO - Attempting to prove lemma: mod_arith_1
+2024-01-15 21:14:21,772 - __main__ - INFO - Running the prover agent for lemma: mod_arith_1 with timeout: 720 seconds
+2024-01-15 21:14:25,908 - __main__ - INFO - Step 0/60 (Actual steps: 0)
+2024-01-15 21:14:25,908 - __main__ - INFO - Asking policy for next action
+2024-01-15 21:14:25,908 - __main__ - ERROR - Exception occurred while proving lemma: mod_arith_1 in file data/test/lean_proj/src/simple.lean
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 246, in _run_prover
+    agent.run_episodes_till_stop(
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 58, in run_episodes_till_stop
+    self._run_episode_as_per_policy(env, stop_policy, policy_info_message, render)
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 75, in _run_episode_as_per_policy
+    action = self._policy(next_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/gpt_guided_tree_search_policy.py", line 201, in __call__
+    action = self._policy_prompter(tree_search_action)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 476, in __call__
+    responses = self.run_prompt(gpt_response)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 328, in run_prompt
+    prompt_message, prompt_token_count, custom_system_msg, custom_system_msg_cnt = self._get_prompt_message(request, max_tokens_in_prompt)
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 195, in _get_prompt_message
+    request.informal_theorem, request.informal_proof = self.informal_proof_repo.get_informal_thm_proof(self.lemma_name)
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/tools/informal_proof_repo.py", line 21, in get_informal_thm_proof
+    return self.repo_map[theorem_name]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'mod_arith_1'
+2024-01-15 21:14:25,916 - __main__ - INFO - Failed to prove lemma: mod_arith_1 in file data/test/lean_proj/src/simple.lean
+2024-01-15 21:14:25,918 - __main__ - INFO - Attempting to prove lemma: n_less_2_pow_n
+2024-01-15 21:14:26,097 - __main__ - INFO - Running the prover agent for lemma: n_less_2_pow_n with timeout: 720 seconds
+2024-01-15 21:14:30,231 - __main__ - INFO - Step 0/60 (Actual steps: 0)
+2024-01-15 21:14:30,231 - __main__ - INFO - Asking policy for next action
+2024-01-15 21:14:30,231 - __main__ - ERROR - Exception occurred while proving lemma: n_less_2_pow_n in file data/test/lean_proj/src/simple.lean
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 246, in _run_prover
+    agent.run_episodes_till_stop(
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 58, in run_episodes_till_stop
+    self._run_episode_as_per_policy(env, stop_policy, policy_info_message, render)
+  File "/home/run001122/GPT_LEAN/copra/src/agent/simple_proof_agent.py", line 75, in _run_episode_as_per_policy
+    action = self._policy(next_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/gpt_guided_tree_search_policy.py", line 201, in __call__
+    action = self._policy_prompter(tree_search_action)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 476, in __call__
+    responses = self.run_prompt(gpt_response)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 328, in run_prompt
+    prompt_message, prompt_token_count, custom_system_msg, custom_system_msg_cnt = self._get_prompt_message(request, max_tokens_in_prompt)
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/agent/dfs_policy_prompter.py", line 195, in _get_prompt_message
+    request.informal_theorem, request.informal_proof = self.informal_proof_repo.get_informal_thm_proof(self.lemma_name)
+                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/run001122/GPT_LEAN/copra/src/tools/informal_proof_repo.py", line 21, in get_informal_thm_proof
+    return self.repo_map[theorem_name]
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^
+KeyError: 'n_less_2_pow_n'
+2024-01-15 21:14:30,241 - __main__ - INFO - Failed to prove lemma: n_less_2_pow_n in file data/test/lean_proj/src/simple.lean
+2024-01-15 21:14:30,250 - __main__ - INFO - Proof not found for lemma: a_plus_b_b_plus_a in file data/test/lean_proj/src/simple.lean
+2024-01-15 21:14:30,250 - __main__ - INFO - Proof not found for lemma: a_plus_zero in file data/test/lean_proj/src/simple.lean
+2024-01-15 21:14:30,250 - __main__ - INFO - Proof not found for lemma: ab_square in file data/test/lean_proj/src/simple.lean
+2024-01-15 21:14:30,250 - __main__ - INFO - Proof not found for lemma: mathd_algebra_478 in file data/test/lean_proj/src/simple.lean
+2024-01-15 21:14:30,250 - __main__ - INFO - Proof not found for lemma: mod_arith_1 in file data/test/lean_proj/src/simple.lean
+2024-01-15 21:14:30,250 - __main__ - INFO - Proof not found for lemma: n_less_2_pow_n in file data/test/lean_proj/src/simple.lean
+2024-01-15 21:14:30,250 - __main__ - INFO - Success rate: 0/6 = 0.0 for benchmark: simple_benchmark_lean
+2024-01-15 21:14:30,250 - __main__ - INFO - Finished running experiment: 
+{
+    "env_settings": {
+        "name": "bm25_retrieval",
+        "retrieval_strategy": "BM25"
+    },
+    "prompt_settings": {
+        "name": "lean_few_shot_informal_to_formal_dfs_gpt4_turbo",
+        "main_prompt": "data/prompts/system/lean-proof-agent-with-dfs-and-informal.md",
+        "conv_prompt": "data/prompts/conversation/lean-proof-agent-example-long-conv-dfs-and-informal.md",
+        "informal_proof_repo": ".log/proofs/eval_driver/informal_few_shot/gpt4/simple_benchmark_lean/20240115-210441/informal_proofs"
+    },
+    "eval_settings": {
+        "name": "n_60_dfs_gpt4_always_retrieve_no_ex",
+        "use_hammer": false,
+        "setting_type": "Agent",
+        "max_proof_depth": 100,
+        "timeout_in_secs": 60,
+        "proof_retries": 1,
+        "max_tokens_per_action": 100,
+        "max_theorems_in_prompt": 3,
+        "gpt_model_name": "gpt-4",
+        "max_number_of_episodes": 1,
+        "max_steps_per_episode": 60,
+        "render": false,
+        "checkpoint_dir": ".log/checkpoints/simple_benchmark_lean/n_60_dfs_gpt4_always_retrieve_no_ex/lean_few_shot_informal_to_formal_dfs_gpt4_turbo",
+        "should_checkpoint": false,
+        "temperature": 0.0,
+        "max_history_messages": 0,
+        "policy_name": "Dfs",
+        "proof_dump_dir": ".log/proofs/eval_driver/dfs/simple_benchmark_lean/20240115-211402",
+        "use_human_readable_proof_context": true,
+        "sample": 1.0,
+        "sample_seed": 3840,
+        "use_example_retrieval": false,
+        "always_use_useful_theorem_retrieval": true,
+        "num_goal_per_prompt": null
+    },
+    "benchmark": {
+        "name": "simple_benchmark_lean",
+        "num_files": 2,
+        "language": "LEAN",
+        "datasets": [
+            {
+                "project": "data/test/lean_proj",
+                "files": [
+                    {
+                        "path": "src/simple.lean",
+                        "theorems": [
+                            "a_plus_b_b_plus_a",
+                            "a_plus_zero",
+                            "ab_square",
+                            "mathd_algebra_478",
+                            "mod_arith_1",
+                            "n_less_2_pow_n"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "few_shot_data_path_for_retrieval": null,
+        "few_shot_metadata_filename_for_retrieval": null,
+        "dfs_data_path_for_retrieval": null,
+        "dfs_metadata_filename_for_retrieval": null
+    }
+}

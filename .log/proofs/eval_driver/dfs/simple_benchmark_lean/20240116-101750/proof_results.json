@@ -1,0 +1,169 @@
+{
+    "path": ".log/proofs/eval_driver/dfs/simple_benchmark_lean/20240116-101750/proof_results.json",
+    "theorem_map": {
+        "data/test/lean_proj/src/simple.lean": {
+            "a_plus_b_b_plus_a": {
+                "proof_file": null,
+                "proof_found": true,
+                "lemma_name": "theorem a_plus_b_b_plus_a\n(a b : \u2115) : a + b = b + a :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "apply nat.add_comm,"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "end"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    }
+                ],
+                "proof_time_in_secs": 6.149522304534912,
+                "inferences_taken": 2,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 1
+                },
+                "language": "LEAN"
+            },
+            "a_plus_zero": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "theorem a_plus_zero: \u2200 (a : \u2115), a + 0 = a :=",
+                "proof_steps": [],
+                "proof_time_in_secs": 9.334367036819458,
+                "inferences_taken": 2,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 2
+                },
+                "language": "LEAN"
+            },
+            "ab_square": {
+                "proof_file": null,
+                "proof_found": true,
+                "lemma_name": "theorem ab_square:\n\u2200 (a b: \u211d), (a + b)^2 = a^2 + b^2 + 2*a*b :=",
+                "proof_steps": [
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "intros a b,"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "ring,"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    },
+                    {
+                        "proof_id": null,
+                        "all_useful_defns_theorems": [],
+                        "goal_description": null,
+                        "start_goals": [],
+                        "end_goals": [],
+                        "proof_steps": [
+                            "end"
+                        ],
+                        "simplified_goals": [],
+                        "addition_state_info": {}
+                    }
+                ],
+                "proof_time_in_secs": 11.236842632293701,
+                "inferences_taken": 3,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 2
+                },
+                "language": "LEAN"
+            },
+            "mathd_algebra_478": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_478",
+                "proof_steps": [],
+                "proof_time_in_secs": -1,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {},
+                "language": "COQ"
+            },
+            "mod_arith_1": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "theorem mod_arith_1\n(x : \u2115) : x % 2 = 0 \u2192 (x * x) % 2 = 0 :=",
+                "proof_steps": [],
+                "proof_time_in_secs": 166.82267904281616,
+                "inferences_taken": 17,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 12
+                },
+                "language": "LEAN"
+            },
+            "n_less_2_pow_n": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "theorem n_less_2_pow_n\n(n : \u2115)\n(h\u2080 : 1 \u2264 n) :\nn < 2^n :=",
+                "proof_steps": [],
+                "proof_time_in_secs": 262.4784882068634,
+                "inferences_taken": 29,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {
+                    "queries": 19
+                },
+                "language": "LEAN"
+            }
+        }
+    }
+}

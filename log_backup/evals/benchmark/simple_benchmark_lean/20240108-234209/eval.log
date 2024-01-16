@@ -1,0 +1,149 @@
+2024-01-08 23:42:09,313 - __main__ - INFO - Pid: 19414
+2024-01-08 23:42:09,314 - __main__ - INFO - Running Experiment: {
+    "env_settings": {
+        "name": "bm25_retrieval",
+        "retrieval_strategy": "BM25"
+    },
+    "prompt_settings": {
+        "name": "lean_dfs",
+        "main_prompt": "data/prompts/system/lean-proof-agent-with-dfs.md",
+        "conv_prompt": "data/prompts/conversation/lean-proof-agent-example-long-conv-dfs.md",
+        "informal_proof_repo": null
+    },
+    "eval_settings": {
+        "name": "n_60_dfs_gpt4_always_retrieve_no_ex",
+        "use_hammer": false,
+        "setting_type": "Agent",
+        "max_proof_depth": 100,
+        "timeout_in_secs": 60,
+        "proof_retries": 1,
+        "max_tokens_per_action": 100,
+        "max_theorems_in_prompt": 3,
+        "gpt_model_name": "gpt-4",
+        "max_number_of_episodes": 1,
+        "max_steps_per_episode": 60,
+        "render": false,
+        "checkpoint_dir": ".log/checkpoints",
+        "should_checkpoint": false,
+        "temperature": 0.0,
+        "max_history_messages": 0,
+        "policy_name": "Dfs",
+        "proof_dump_dir": ".log/proofs/eval_driver/dfs",
+        "use_human_readable_proof_context": true,
+        "sample": 1.0,
+        "sample_seed": 3840,
+        "use_example_retrieval": false,
+        "always_use_useful_theorem_retrieval": true,
+        "num_goal_per_prompt": null
+    },
+    "benchmark": {
+        "name": "simple_benchmark_lean",
+        "num_files": 2,
+        "language": "LEAN",
+        "datasets": [
+            {
+                "project": "data/test/lean_proj",
+                "files": [
+                    {
+                        "path": "src/simple.lean",
+                        "theorems": "*"
+                    }
+                ]
+            }
+        ],
+        "few_shot_data_path_for_retrieval": null,
+        "few_shot_metadata_filename_for_retrieval": null,
+        "dfs_data_path_for_retrieval": null,
+        "dfs_metadata_filename_for_retrieval": null
+    }
+}
+2024-01-08 23:42:09,328 - __main__ - INFO - Getting all lemmas in file: data/test/lean_proj/src/simple.lean with timeout: 300000 seconds
+2024-01-08 23:42:09,888 - __main__ - INFO - Discovered 6 lemmas
+2024-01-08 23:42:09,899 - __main__ - INFO - Discovered 6 lemmas to prove in data/test/lean_proj/src/simple.lean
+2024-01-08 23:42:09,900 - __main__ - INFO - Lemmas to prove in file data/test/lean_proj/src/simple.lean: 
+['a_plus_b_b_plus_a', 'mod_arith_1', 'n_less_2_pow_n', 'a_plus_zero', 'mathd_algebra_478', 'ab_square']
+2024-01-08 23:42:09,900 - __main__ - INFO - Attempting to prove lemma: a_plus_b_b_plus_a
+2024-01-08 23:42:10,231 - __main__ - INFO - Skipping the attempt for proving lemma: a_plus_b_b_plus_a in file data/test/lean_proj/src/simple.lean as it was already attempted before.
+2024-01-08 23:42:10,231 - __main__ - INFO - Attempting to prove lemma: a_plus_zero
+2024-01-08 23:42:10,414 - __main__ - INFO - Skipping the attempt for proving lemma: a_plus_zero in file data/test/lean_proj/src/simple.lean as it was already attempted before.
+2024-01-08 23:42:10,414 - __main__ - INFO - Attempting to prove lemma: ab_square
+2024-01-08 23:42:10,598 - __main__ - INFO - Skipping the attempt for proving lemma: ab_square in file data/test/lean_proj/src/simple.lean as it was already attempted before.
+2024-01-08 23:42:10,598 - __main__ - INFO - Attempting to prove lemma: mathd_algebra_478
+2024-01-08 23:42:10,773 - __main__ - INFO - Skipping the attempt for proving lemma: mathd_algebra_478 in file data/test/lean_proj/src/simple.lean as it was already attempted before.
+2024-01-08 23:42:10,773 - __main__ - INFO - Attempting to prove lemma: mod_arith_1
+2024-01-08 23:42:10,956 - __main__ - INFO - Skipping the attempt for proving lemma: mod_arith_1 in file data/test/lean_proj/src/simple.lean as it was already attempted before.
+2024-01-08 23:42:10,956 - __main__ - INFO - Attempting to prove lemma: n_less_2_pow_n
+2024-01-08 23:42:11,145 - __main__ - INFO - Skipping the attempt for proving lemma: n_less_2_pow_n in file data/test/lean_proj/src/simple.lean as it was already attempted before.
+2024-01-08 23:42:11,152 - __main__ - INFO - Proof found for lemma: a_plus_b_b_plus_a in file data/test/lean_proj/src/simple.lean
+2024-01-08 23:42:11,152 - __main__ - INFO - Proof found for lemma: a_plus_zero in file data/test/lean_proj/src/simple.lean
+2024-01-08 23:42:11,152 - __main__ - INFO - Proof found for lemma: ab_square in file data/test/lean_proj/src/simple.lean
+2024-01-08 23:42:11,152 - __main__ - INFO - Proof found for lemma: mathd_algebra_478 in file data/test/lean_proj/src/simple.lean
+2024-01-08 23:42:11,152 - __main__ - INFO - Proof not found for lemma: mod_arith_1 in file data/test/lean_proj/src/simple.lean
+2024-01-08 23:42:11,152 - __main__ - INFO - Proof not found for lemma: n_less_2_pow_n in file data/test/lean_proj/src/simple.lean
+2024-01-08 23:42:11,152 - __main__ - INFO - Success rate: 4/6 = 0.6666666666666666 for benchmark: simple_benchmark_lean
+2024-01-08 23:42:11,153 - __main__ - INFO - Finished running experiment: 
+{
+    "env_settings": {
+        "name": "bm25_retrieval",
+        "retrieval_strategy": "BM25"
+    },
+    "prompt_settings": {
+        "name": "lean_dfs",
+        "main_prompt": "data/prompts/system/lean-proof-agent-with-dfs.md",
+        "conv_prompt": "data/prompts/conversation/lean-proof-agent-example-long-conv-dfs.md",
+        "informal_proof_repo": null
+    },
+    "eval_settings": {
+        "name": "n_60_dfs_gpt4_always_retrieve_no_ex",
+        "use_hammer": false,
+        "setting_type": "Agent",
+        "max_proof_depth": 100,
+        "timeout_in_secs": 60,
+        "proof_retries": 1,
+        "max_tokens_per_action": 100,
+        "max_theorems_in_prompt": 3,
+        "gpt_model_name": "gpt-4",
+        "max_number_of_episodes": 1,
+        "max_steps_per_episode": 60,
+        "render": false,
+        "checkpoint_dir": ".log/checkpoints/simple_benchmark_lean/n_60_dfs_gpt4_always_retrieve_no_ex/lean_dfs",
+        "should_checkpoint": false,
+        "temperature": 0.0,
+        "max_history_messages": 0,
+        "policy_name": "Dfs",
+        "proof_dump_dir": ".log/proofs/eval_driver/dfs/simple_benchmark_lean/20240108-232543",
+        "use_human_readable_proof_context": true,
+        "sample": 1.0,
+        "sample_seed": 3840,
+        "use_example_retrieval": false,
+        "always_use_useful_theorem_retrieval": true,
+        "num_goal_per_prompt": null
+    },
+    "benchmark": {
+        "name": "simple_benchmark_lean",
+        "num_files": 2,
+        "language": "LEAN",
+        "datasets": [
+            {
+                "project": "data/test/lean_proj",
+                "files": [
+                    {
+                        "path": "src/simple.lean",
+                        "theorems": [
+                            "a_plus_b_b_plus_a",
+                            "a_plus_zero",
+                            "ab_square",
+                            "mathd_algebra_478",
+                            "mod_arith_1",
+                            "n_less_2_pow_n"
+                        ]
+                    }
+                ]
+            }
+        ],
+        "few_shot_data_path_for_retrieval": null,
+        "few_shot_metadata_filename_for_retrieval": null,
+        "dfs_data_path_for_retrieval": null,
+        "dfs_metadata_filename_for_retrieval": null
+    }
+}

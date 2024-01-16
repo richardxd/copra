@@ -1,0 +1,126 @@
+2024-01-15 22:55:02,123 - __main__ - INFO - Pid: 17855
+2024-01-15 22:55:02,123 - __main__ - INFO - Running Experiment: {
+    "env_settings": {
+        "name": "bm25_retrieval",
+        "retrieval_strategy": "BM25"
+    },
+    "prompt_settings": {
+        "name": "lean_few_shot_informal",
+        "main_prompt": "data/prompts/baseline/simple-prompt-lean-informal.md",
+        "conv_prompt": "data/prompts/baseline/simple-prompt-conv-lean-informal.md",
+        "informal_proof_repo": null
+    },
+    "eval_settings": {
+        "name": "n_4_informal_gpt4_turbo",
+        "use_hammer": false,
+        "setting_type": "Agent",
+        "max_proof_depth": 100,
+        "timeout_in_secs": 60,
+        "proof_retries": 1,
+        "max_tokens_per_action": 1000,
+        "max_theorems_in_prompt": 7,
+        "gpt_model_name": "gpt-4-1106-preview",
+        "max_number_of_episodes": 1,
+        "max_steps_per_episode": 4,
+        "render": true,
+        "checkpoint_dir": ".log/checkpoints",
+        "should_checkpoint": false,
+        "temperature": 0.0,
+        "max_history_messages": 0,
+        "policy_name": "InformalFewShot",
+        "proof_dump_dir": ".log/proofs/eval_driver/informal_few_shot/gpt4",
+        "use_human_readable_proof_context": true,
+        "sample": 1.0,
+        "sample_seed": 3840,
+        "use_example_retrieval": false,
+        "always_use_useful_theorem_retrieval": false,
+        "num_goal_per_prompt": null
+    },
+    "benchmark": {
+        "name": "simple_benchmark_lean",
+        "num_files": 2,
+        "language": "LEAN",
+        "datasets": [
+            {
+                "project": "data/test/lean_proj",
+                "files": [
+                    {
+                        "path": "src/simple.lean",
+                        "theorems": "*"
+                    }
+                ]
+            }
+        ],
+        "few_shot_data_path_for_retrieval": null,
+        "few_shot_metadata_filename_for_retrieval": null,
+        "dfs_data_path_for_retrieval": null,
+        "dfs_metadata_filename_for_retrieval": null
+    }
+}
+2024-01-15 22:55:02,124 - __main__ - ERROR - Exception occurred. Retrying 0 more times.
+Traceback (most recent call last):
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 375, in eval_benchmark
+    eval_dataset(env_settings, benchmark, prompt_settings, dataset, eval_settings, checkpoint_info, eval_proof_results, logger=logger)
+  File "/home/run001122/GPT_LEAN/copra/src/main/eval_benchmark.py", line 83, in eval_dataset
+    with open(proof_dump_file_name, "w") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '.log/proofs/eval_driver/informal_few_shot/gpt4/simple_benchmark_lean/20240115-210441/data_test_lean_proj_src_simple.lean.txt'
+2024-01-15 22:55:12,125 - __main__ - INFO - Finished running experiment: 
+{
+    "env_settings": {
+        "name": "bm25_retrieval",
+        "retrieval_strategy": "BM25"
+    },
+    "prompt_settings": {
+        "name": "lean_few_shot_informal",
+        "main_prompt": "data/prompts/baseline/simple-prompt-lean-informal.md",
+        "conv_prompt": "data/prompts/baseline/simple-prompt-conv-lean-informal.md",
+        "informal_proof_repo": null
+    },
+    "eval_settings": {
+        "name": "n_4_informal_gpt4_turbo",
+        "use_hammer": false,
+        "setting_type": "Agent",
+        "max_proof_depth": 100,
+        "timeout_in_secs": 60,
+        "proof_retries": 1,
+        "max_tokens_per_action": 1000,
+        "max_theorems_in_prompt": 7,
+        "gpt_model_name": "gpt-4-1106-preview",
+        "max_number_of_episodes": 1,
+        "max_steps_per_episode": 4,
+        "render": true,
+        "checkpoint_dir": ".log/checkpoints/simple_benchmark_lean/n_4_informal_gpt4_turbo/lean_few_shot_informal",
+        "should_checkpoint": false,
+        "temperature": 0.0,
+        "max_history_messages": 0,
+        "policy_name": "InformalFewShot",
+        "proof_dump_dir": ".log/proofs/eval_driver/informal_few_shot/gpt4/simple_benchmark_lean/20240115-210441",
+        "use_human_readable_proof_context": true,
+        "sample": 1.0,
+        "sample_seed": 3840,
+        "use_example_retrieval": false,
+        "always_use_useful_theorem_retrieval": false,
+        "num_goal_per_prompt": null
+    },
+    "benchmark": {
+        "name": "simple_benchmark_lean",
+        "num_files": 2,
+        "language": "LEAN",
+        "datasets": [
+            {
+                "project": "data/test/lean_proj",
+                "files": [
+                    {
+                        "path": "src/simple.lean",
+                        "theorems": "*"
+                    }
+                ]
+            }
+        ],
+        "few_shot_data_path_for_retrieval": null,
+        "few_shot_metadata_filename_for_retrieval": null,
+        "dfs_data_path_for_retrieval": null,
+        "dfs_metadata_filename_for_retrieval": null
+    }
+}
