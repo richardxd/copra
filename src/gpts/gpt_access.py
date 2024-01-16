@@ -256,5 +256,6 @@ if __name__ == "__main__":
             "content": "Our idea seems to be scooped, don't know how to change direction now."
         }
     ]
+    print("printing complete chat:")
     print(openai_access.complete_chat(messages, max_tokens=15, n=2, temperature=0.8))
     pass

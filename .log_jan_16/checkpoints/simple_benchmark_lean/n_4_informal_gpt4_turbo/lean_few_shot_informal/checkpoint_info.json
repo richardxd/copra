@@ -1,0 +1,17 @@
+{
+    "checkpoint_file": ".log/checkpoints/simple_benchmark_lean/n_4_informal_gpt4_turbo/lean_few_shot_informal/checkpoint_info.json",
+    "logging_dirs": [
+        ".log/evals/benchmark/simple_benchmark_lean/20240116-001512"
+    ],
+    "proof_dump_dir": ".log/proofs/eval_driver/informal_few_shot/gpt4/simple_benchmark_lean/20240116-001512",
+    "theorem_maps": {
+        "data/test/lean_proj/src/simple.lean": {
+            "a_plus_b_b_plus_a": false,
+            "a_plus_zero": false,
+            "ab_square": false,
+            "mathd_algebra_478": false,
+            "mod_arith_1": false,
+            "n_less_2_pow_n": false
+        }
+    }
+}

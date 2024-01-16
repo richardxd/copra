@@ -1,0 +1,985 @@
+File: data/benchmarks/miniF2F/lean/src/test.lean
+Dataset:
+ {
+    "project": "data/benchmarks/miniF2F",
+    "files": [
+        {
+            "path": "lean/src/test.lean",
+            "theorems": "*"
+        }
+    ]
+}
+Evaluation Settings:
+ {
+    "name": "n_60_dfs_gpt4_always_retrieve_no_ex",
+    "use_hammer": false,
+    "setting_type": "Agent",
+    "max_proof_depth": 100,
+    "timeout_in_secs": 60,
+    "proof_retries": 1,
+    "max_tokens_per_action": 100,
+    "max_theorems_in_prompt": 3,
+    "gpt_model_name": "gpt-4",
+    "max_number_of_episodes": 1,
+    "max_steps_per_episode": 60,
+    "render": false,
+    "checkpoint_dir": ".log/checkpoints/miniF2F_test/n_60_dfs_gpt4_always_retrieve_no_ex/lean_dfs",
+    "should_checkpoint": false,
+    "temperature": 0.0,
+    "max_history_messages": 0,
+    "policy_name": "Dfs",
+    "proof_dump_dir": ".log/proofs/eval_driver/dfs/miniF2F_test/20240108-235028",
+    "use_human_readable_proof_context": true,
+    "sample": 1.0,
+    "sample_seed": 3840,
+    "use_example_retrieval": false,
+    "always_use_useful_theorem_retrieval": true,
+    "num_goal_per_prompt": null
+}
+
+
+theorem aime_1983_p1
+(x y z w : ℕ)
+(ht : 1 < x ∧ 1 < y ∧ 1 < z)
+(hw : 0 ≤ w)
+(h0 : real.log w / real.log x = 24)
+(h1 : real.log w / real.log y = 40)
+(h2 : real.log w / real.log (x * y * z) = 12):
+real.log w / real.log z = 60 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem aime_1983_p1
+(x y z w : ℕ)
+(ht : 1 < x ∧ 1 < y ∧ 1 < z)
+(hw : 0 ≤ w)
+(h0 : real.log w / real.log x = 24)
+(h1 : real.log w / real.log y = 40)
+(h2 : real.log w / real.log (x * y * z) = 12):
+real.log w / real.log z = 60 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 18
+SearchTimeInSecs: 251.6880271434784
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 15}
+
+
+
+theorem aime_1983_p2
+(x p : ℝ)
+(f : ℝ → ℝ)
+(h₀ : 0 < p ∧ p < 15)
+(h₁ : p ≤ x ∧ x ≤ 15)
+(h₂ : f x = abs (x - p) + abs (x - 15) + abs (x - p - 15)) :
+15 ≤ f x :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem aime_1983_p2
+(x p : ℝ)
+(f : ℝ → ℝ)
+(h₀ : 0 < p ∧ p < 15)
+(h₁ : p ≤ x ∧ x ≤ 15)
+(h₂ : f x = abs (x - p) + abs (x - 15) + abs (x - p - 15)) :
+15 ≤ f x :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 10
+SearchTimeInSecs: 126.16673731803894
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 8}
+
+
+
+theorem aime_1983_p3
+(f : ℝ → ℝ)
+(h₀ : ∀ x, f x = (x^2 + (18 * x +  30) - 2 * real.sqrt (x^2 + (18 * x + 45))))
+(h₁ : fintype (f⁻¹' {0})) :
+∏ x in (f⁻¹' {0}).to_finset, x = 20 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem aime_1983_p3
+(f : ℝ → ℝ)
+(h₀ : ∀ x, f x = (x^2 + (18 * x +  30) - 2 * real.sqrt (x^2 + (18 * x + 45))))
+(h₁ : fintype (f⁻¹' {0})) :
+∏ x in (f⁻¹' {0}).to_finset, x = 20 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 48
+SearchTimeInSecs: 626.9938547611237
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 38}
+
+
+
+theorem aime_1984_p1
+(u : ℕ → ℚ)
+(h₀ : ∀ n, u (n + 1) = u n + 1)
+(h₁ : ∑ k in finset.range 98, u k.succ = 137) :
+∑ k in finset.range 49, u (2 * k.succ) = 93 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem aime_1984_p1
+(u : ℕ → ℚ)
+(h₀ : ∀ n, u (n + 1) = u n + 1)
+(h₁ : ∑ k in finset.range 98, u k.succ = 137) :
+∑ k in finset.range 49, u (2 * k.succ) = 93 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 33.42260217666626
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 3}
+
+
+
+theorem aime_1984_p7
+(f : ℤ → ℤ)
+(h₀ : ∀ n, 1000 ≤ n → f n = n - 3)
+(h₁ : ∀ n, n < 1000 → f n = f (f (n + 5))) :
+f 84 = 997 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem aime_1984_p7
+(f : ℤ → ℤ)
+(h₀ : ∀ n, 1000 ≤ n → f n = n - 3)
+(h₁ : ∀ n, n < 1000 → f n = f (f (n + 5))) :
+f 84 = 997 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 11
+SearchTimeInSecs: 150.74483489990234
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 10}
+
+
+
+theorem aime_1987_p5
+(x y : ℤ)
+(h₀ : y^2 + 3 * (x^2 * y^2) = 30 * x^2 + 517):
+3 * (x^2 * y^2) = 588 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem aime_1987_p5
+(x y : ℤ)
+(h₀ : y^2 + 3 * (x^2 * y^2) = 30 * x^2 + 517):
+3 * (x^2 * y^2) = 588 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 8
+SearchTimeInSecs: 54.49758553504944
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 6}
+
+
+
+theorem aime_1988_p8
+(f : ℕ → ℕ → ℝ)
+(h₀ : ∀ x, 0 < x → f x x = x)
+(h₁ : ∀ x y, (0 < x ∧ 0 < y) → f x y = f y x)
+(h₂ : ∀ x y, (0 < x ∧ 0 < y) → (↑x + ↑y) * f x y = y * (f x (x + y))) :
+f 14 52 = 364 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem aime_1988_p8
+(f : ℕ → ℕ → ℝ)
+(h₀ : ∀ x, 0 < x → f x x = x)
+(h₁ : ∀ x y, (0 < x ∧ 0 < y) → f x y = f y x)
+(h₂ : ∀ x y, (0 < x ∧ 0 < y) → (↑x + ↑y) * f x y = y * (f x (x + y))) :
+f 14 52 = 364 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 17.140569925308228
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+
+theorem aime_1989_p8
+(a b c d e f g : ℝ)
+(h₀ : a + 4 * b + 9 * c + 16 * d + 25 * e + 36 * f + 49 * g = 1)
+(h₁ : 4 * a + 9 * b + 16 * c + 25 * d + 36 * e + 49 * f + 64 * g = 12)
+(h₂ : 9 * a + 16 * b + 25 * c + 36 * d + 49 * e + 64 * f + 81 * g = 123) :
+16 * a + 25 * b + 36 * c + 49 * d + 64 * e + 81 * f + 100 * g = 334 :=
+begin
+    linarith,
+end
+
+ProofFile: None
+LemmaName: theorem aime_1989_p8
+(a b c d e f g : ℝ)
+(h₀ : a + 4 * b + 9 * c + 16 * d + 25 * e + 36 * f + 49 * g = 1)
+(h₁ : 4 * a + 9 * b + 16 * c + 25 * d + 36 * e + 49 * f + 64 * g = 12)
+(h₂ : 9 * a + 16 * b + 25 * c + 36 * d + 49 * e + 64 * f + 81 * g = 123) :
+16 * a + 25 * b + 36 * c + 49 * d + 64 * e + 81 * f + 100 * g = 334 :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 15.899937391281128
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1}
+
+
+
+theorem aime_1991_p9
+(x : ℝ)
+(m : ℚ)
+(h₀ : 1 / real.cos x + real.tan x = 22 / 7)
+(h₁ : 1 / real.sin x + 1 / real.tan x = m) :
+↑m.denom + m.num = 44 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem aime_1991_p9
+(x : ℝ)
+(m : ℚ)
+(h₀ : 1 / real.cos x + real.tan x = 22 / 7)
+(h₁ : 1 / real.sin x + 1 / real.tan x = m) :
+↑m.denom + m.num = 44 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 6
+SearchTimeInSecs: 62.79471492767334
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 6}
+
+
+
+theorem aime_1994_p3
+(x : ℤ)
+(f : ℤ → ℤ)
+(h0 : f x + f (x-1) = x^2)
+(h1 : f 19 = 94):
+f (94) % 1000 = 561 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem aime_1994_p3
+(x : ℤ)
+(f : ℤ → ℤ)
+(h0 : f x + f (x-1) = x^2)
+(h1 : f 19 = 94):
+f (94) % 1000 = 561 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 5
+SearchTimeInSecs: 58.57652235031128
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 5}
+
+
+
+theorem aime_1999_p11
+(m : ℚ)
+(h₀ : 0 < m)
+(h₁ : ∑ k in finset.Icc (1 : ℕ) 35, real.sin (5 * k * π / 180) = real.tan (m * π / 180))
+(h₂ : (m.num:ℝ) / m.denom < 90) :
+↑m.denom + m.num = 177 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem aime_1999_p11
+(m : ℚ)
+(h₀ : 0 < m)
+(h₁ : ∑ k in finset.Icc (1 : ℕ) 35, real.sin (5 * k * π / 180) = real.tan (m * π / 180))
+(h₂ : (m.num:ℝ) / m.denom < 90) :
+↑m.denom + m.num = 177 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 9
+SearchTimeInSecs: 141.1075518131256
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 9}
+
+
+
+theorem algebra_2varlineareq_fp3zeq11_3tfm1m5zeqn68_feqn10_zeq7
+(f z: ℂ)
+(h₀ : f + 3*z = 11)
+(h₁ : 3*(f - 1) - 5*z = -68) :
+f = -10 ∧ z = 7 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_2varlineareq_fp3zeq11_3tfm1m5zeqn68_feqn10_zeq7
+(f z: ℂ)
+(h₀ : f + 3*z = 11)
+(h₁ : 3*(f - 1) - 5*z = -68) :
+f = -10 ∧ z = 7 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 7
+SearchTimeInSecs: 48.9648232460022
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 5}
+
+
+
+theorem algebra_9onxpypzleqsum2onxpy
+(x y z : ℝ)
+(h₀ : 0 < x ∧ 0 < y ∧ 0 < z) :
+9 / (x + y + z) ≤ 2 / (x + y) + 2 / (y + z) + 2 / (z + x) :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_9onxpypzleqsum2onxpy
+(x y z : ℝ)
+(h₀ : 0 < x ∧ 0 < y ∧ 0 < z) :
+9 / (x + y + z) ≤ 2 / (x + y) + 2 / (y + z) + 2 / (z + x) :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 61
+SearchTimeInSecs: 659.876213312149
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 41}
+
+
+
+theorem algebra_abpbcpcageq3_sumaonsqrtapbgeq3onsqrt2
+(a b c : ℝ)
+(h₀ : 0 < a ∧ 0 < b ∧ 0 < c)
+(h₁ : 3 ≤ a * b + b * c + c * a) :
+3 / real.sqrt 2 ≤ a / real.sqrt (a + b) + b / real.sqrt (b + c) + c / real.sqrt (c + a) :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_abpbcpcageq3_sumaonsqrtapbgeq3onsqrt2
+(a b c : ℝ)
+(h₀ : 0 < a ∧ 0 < b ∧ 0 < c)
+(h₁ : 3 ≤ a * b + b * c + c * a) :
+3 / real.sqrt 2 ≤ a / real.sqrt (a + b) + b / real.sqrt (b + c) + c / real.sqrt (c + a) :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 4
+SearchTimeInSecs: 37.848921060562134
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 4}
+
+
+
+theorem algebra_absapbon1pabsapbleqsumabsaon1pabsa
+(a b : ℝ) :
+abs (a + b) / (1 + abs (a + b)) ≤ abs a / (1 + abs a) + abs b / (1 + abs b) :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_absapbon1pabsapbleqsumabsaon1pabsa
+(a b : ℝ) :
+abs (a + b) / (1 + abs (a + b)) ≤ abs a / (1 + abs a) + abs b / (1 + abs b) :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 6
+SearchTimeInSecs: 54.28830933570862
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 6}
+
+
+
+theorem algebra_absxm1pabsxpabsxp1eqxp2_0leqxleq1
+(x : ℝ)
+(h₀ : abs (x - 1) + abs x + abs (x + 1) = x + 2) :
+0 ≤ x ∧ x ≤ 1 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_absxm1pabsxpabsxp1eqxp2_0leqxleq1
+(x : ℝ)
+(h₀ : abs (x - 1) + abs x + abs (x + 1) = x + 2) :
+0 ≤ x ∧ x ≤ 1 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 12
+SearchTimeInSecs: 130.0045623779297
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 9}
+
+
+
+theorem algebra_amgm_sum1toneqn_prod1tonleq1
+(a : ℕ → nnreal)
+(n : ℕ)
+(h₀ : ∑ x in finset.range n, a x = n) :
+∏ x in finset.range n, a x ≤ 1 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_amgm_sum1toneqn_prod1tonleq1
+(a : ℕ → nnreal)
+(n : ℕ)
+(h₀ : ∑ x in finset.range n, a x = n) :
+∏ x in finset.range n, a x ≤ 1 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 38
+SearchTimeInSecs: 515.2767422199249
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 29}
+
+
+
+theorem algebra_amgm_sumasqdivbgeqsuma
+(a b c d : ℝ)
+(h₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < d) :
+a^2 / b + b^2 / c + c^2 / d + d^2 / a ≥ a + b + c + d :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_amgm_sumasqdivbgeqsuma
+(a b c d : ℝ)
+(h₀ : 0 < a ∧ 0 < b ∧ 0 < c ∧ 0 < d) :
+a^2 / b + b^2 / c + c^2 / d + d^2 / a ≥ a + b + c + d :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 19.367687463760376
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+
+theorem algebra_apbmpcneq0_aeq0anbeq0anceq0
+(a b c : ℚ)
+(m n : ℝ)
+(h₀ : 0 < m ∧ 0 < n)
+(h₁ : m^3 = 2)
+(h₂ : n^3 = 4)
+(h₃ : (a:ℝ) + b * m + c * n = 0) :
+a = 0 ∧ b = 0 ∧ c = 0 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_apbmpcneq0_aeq0anbeq0anceq0
+(a b c : ℚ)
+(m n : ℝ)
+(h₀ : 0 < m ∧ 0 < n)
+(h₁ : m^3 = 2)
+(h₂ : n^3 = 4)
+(h₃ : (a:ℝ) + b * m + c * n = 0) :
+a = 0 ∧ b = 0 ∧ c = 0 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 28
+SearchTimeInSecs: 287.7300636768341
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 19}
+
+
+
+theorem algebra_apbon2pownleqapownpbpowon2
+(a b : ℝ)
+(n : ℕ)
+(h₀ : 0 < a ∧ 0 < b)
+(h₁ : 0 < n) :
+((a + b) / 2)^n ≤ (a^n + b^n) / 2 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_apbon2pownleqapownpbpowon2
+(a b : ℝ)
+(n : ℕ)
+(h₀ : 0 < a ∧ 0 < b)
+(h₁ : 0 < n) :
+((a + b) / 2)^n ≤ (a^n + b^n) / 2 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 4
+SearchTimeInSecs: 38.88746166229248
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 4}
+
+
+
+theorem algebra_apbpceq2_abpbcpcaeq1_aleq1on3anbleq1ancleq4on3
+(a b c : ℝ)
+(h₀ : a ≤ b ∧ b ≤ c)
+(h₁ : a + b + c = 2)
+(h₂ : a * b + b * c + c * a = 1) :
+0 ≤ a ∧ a ≤ 1 / 3 ∧ 1 / 3 ≤ b ∧ b ≤ 1 ∧ 1 ≤ c ∧ c ≤ 4 / 3 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_apbpceq2_abpbcpcaeq1_aleq1on3anbleq1ancleq4on3
+(a b c : ℝ)
+(h₀ : a ≤ b ∧ b ≤ c)
+(h₁ : a + b + c = 2)
+(h₂ : a * b + b * c + c * a = 1) :
+0 ≤ a ∧ a ≤ 1 / 3 ∧ 1 / 3 ≤ b ∧ b ≤ 1 ∧ 1 ≤ c ∧ c ≤ 4 / 3 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 9
+SearchTimeInSecs: 67.62489199638367
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 7}
+
+
+
+theorem algebra_cubrtrp1oncubrtreq3_rcubp1onrcubeq5778
+(r : ℝ)
+(h₀ : r^((1:ℝ) / 3) + 1 / r^((1:ℝ) / 3) = 3) :
+r^3 + 1 / r^3 = 5778 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_cubrtrp1oncubrtreq3_rcubp1onrcubeq5778
+(r : ℝ)
+(h₀ : r^((1:ℝ) / 3) + 1 / r^((1:ℝ) / 3) = 3) :
+r^3 + 1 / r^3 = 5778 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 23
+SearchTimeInSecs: 301.16354393959045
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 17}
+
+
+
+theorem algebra_ineq_nto1onlt2m1on
+(n : ℕ) :
+(n:ℝ)^((1:ℝ) / n) < 2 - 1 / n :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_ineq_nto1onlt2m1on
+(n : ℕ) :
+(n:ℝ)^((1:ℝ) / n) < 2 - 1 / n :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 4
+SearchTimeInSecs: 38.947433948516846
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 4}
+
+
+
+theorem algebra_others_exirrpowirrrat :
+∃ a b, irrational a ∧ irrational b ∧ ¬ irrational (a^b) :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_others_exirrpowirrrat :
+∃ a b, irrational a ∧ irrational b ∧ ¬ irrational (a^b) :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 26.982864141464233
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 3}
+
+
+
+theorem algebra_sqineq_at2malt1
+(a : ℝ) :
+a * (2 - a) ≤ 1 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_sqineq_at2malt1
+(a : ℝ) :
+a * (2 - a) ≤ 1 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 18
+SearchTimeInSecs: 179.7474808692932
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 14}
+
+
+
+theorem algebra_sqineq_unitcircatbpabsamblt1
+(a b: ℝ)
+(h₀ : a^2 + b^2 = 1) :
+a * b + ∥a - b∥ ≤ 1 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_sqineq_unitcircatbpabsamblt1
+(a b: ℝ)
+(h₀ : a^2 + b^2 = 1) :
+a * b + ∥a - b∥ ≤ 1 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 43
+SearchTimeInSecs: 450.8680112361908
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 31}
+
+
+
+theorem algebra_sum1onsqrt2to1onsqrt10000lt198 :
+∑ k in (finset.Icc (2 : ℕ) 10000), (1 / real.sqrt k) < 198 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem algebra_sum1onsqrt2to1onsqrt10000lt198 :
+∑ k in (finset.Icc (2 : ℕ) 10000), (1 / real.sqrt k) < 198 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 9
+SearchTimeInSecs: 141.178151845932
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 9}
+
+
+
+theorem amc12_2000_p20
+(x y z : ℝ)
+(h₀ : 0 < x ∧ 0 < y ∧ 0 < z)
+(h₁ : x + 1/y = 4)
+(h₂ : y + 1/z = 1)
+(h₃ : z + 1/x = 7/3) :
+x*y*z = 1 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem amc12_2000_p20
+(x y z : ℝ)
+(h₀ : 0 < x ∧ 0 < y ∧ 0 < z)
+(h₁ : x + 1/y = 4)
+(h₂ : y + 1/z = 1)
+(h₃ : z + 1/x = 7/3) :
+x*y*z = 1 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 45
+SearchTimeInSecs: 563.9677410125732
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 30}
+
+
+
+theorem amc12_2000_p6
+(p q : ℕ)
+(h₀ : nat.prime p ∧ nat.prime q)
+(h₁ : 4 ≤ p ∧ p ≤ 18)
+(h₂ : 4 ≤ q ∧ q ≤ 18) :
+↑p * ↑q - (↑p + ↑q) ≠ (194:ℤ) :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem amc12_2000_p6
+(p q : ℕ)
+(h₀ : nat.prime p ∧ nat.prime q)
+(h₁ : 4 ≤ p ∧ p ≤ 18)
+(h₂ : 4 ≤ q ∧ q ≤ 18) :
+↑p * ↑q - (↑p + ↑q) ≠ (194:ℤ) :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 17.487935066223145
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+
+theorem amc12_2001_p21
+(a b c d : ℕ)
+(h₀ : a * b * c * d = 8!)
+(h₁ : a * b + a + b = 524)
+(h₂ : b * c + b + c = 146)
+(h₃ : c * d + c + d = 104) :
+↑a - ↑d = (10 : ℤ) :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem amc12_2001_p21
+(a b c d : ℕ)
+(h₀ : a * b * c * d = 8!)
+(h₁ : a * b + a + b = 524)
+(h₂ : b * c + b + c = 146)
+(h₃ : c * d + c + d = 104) :
+↑a - ↑d = (10 : ℤ) :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 14
+SearchTimeInSecs: 136.2993552684784
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 9}
+
+
+
+theorem amc12_2001_p5 :
+finset.prod (finset.filter (λ x, ¬ even x) (finset.range 10000)) (id : ℕ → ℕ) = (10000!) / ((2^5000) * 5000!) :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem amc12_2001_p5 :
+finset.prod (finset.filter (λ x, ¬ even x) (finset.range 10000)) (id : ℕ → ℕ) = (10000!) / ((2^5000) * 5000!) :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 19.2802836894989
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+
+theorem amc12a_2002_p6
+(n : ℕ)
+(h₀ : 0 < n) :
+∃ m, (m > n ∧ ∃ p, m * p ≤ m + p) :=
+begin
+    use n + 1,
+    split,
+    linarith,
+    use 1,
+    linarith,
+end
+
+ProofFile: None
+LemmaName: theorem amc12a_2002_p6
+(n : ℕ)
+(h₀ : 0 < n) :
+∃ m, (m > n ∧ ∃ p, m * p ≤ m + p) :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 8
+SearchTimeInSecs: 79.41700959205627
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 7}
+
+
+
+theorem amc12a_2003_p23
+(S : finset ℕ)
+(h₀ : ∀ (k : ℕ), k ∈ S ↔ 0 < k ∧ ((k * k) : ℕ) ∣ (∏ i in (finset.Icc 1 9), i!)) :
+S.card = 672 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem amc12a_2003_p23
+(S : finset ℕ)
+(h₀ : ∀ (k : ℕ), k ∈ S ↔ 0 < k ∧ ((k * k) : ℕ) ∣ (∏ i in (finset.Icc 1 9), i!)) :
+S.card = 672 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 11
+SearchTimeInSecs: 132.53442215919495
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 8}
+
+
+
+theorem amc12a_2003_p5
+(A M C : ℕ)
+(h₀ : A ≤ 9 ∧ M ≤ 9 ∧ C ≤ 9)
+(h₁ : nat.of_digits 10 [0,1,C,M,A] + nat.of_digits 10 [2,1,C,M,A] = 123422) :
+A + M + C = 14 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem amc12a_2003_p5
+(A M C : ℕ)
+(h₀ : A ≤ 9 ∧ M ≤ 9 ∧ C ≤ 9)
+(h₁ : nat.of_digits 10 [0,1,C,M,A] + nat.of_digits 10 [2,1,C,M,A] = 123422) :
+A + M + C = 14 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 7
+SearchTimeInSecs: 58.75131297111511
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 6}
+
+
+
+theorem amc12a_2008_p25
+(a b : ℕ → ℝ)
+(h₀ : ∀ n, a (n + 1) = real.sqrt 3 * a n - b n)
+(h₁ : ∀ n, b (n + 1) = real.sqrt 3 * b n + a n)
+(h₂ : a 100 = 2)
+(h₃ : b 100 = 4) :
+a 1 + b 1 = 1 / (2^98) :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem amc12a_2008_p25
+(a b : ℕ → ℝ)
+(h₀ : ∀ n, a (n + 1) = real.sqrt 3 * a n - b n)
+(h₁ : ∀ n, b (n + 1) = real.sqrt 3 * b n + a n)
+(h₂ : a 100 = 2)
+(h₃ : b 100 = 4) :
+a 1 + b 1 = 1 / (2^98) :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 18
+SearchTimeInSecs: 180.22852969169617
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 13}
+

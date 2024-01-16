@@ -1,0 +1,18 @@
+{
+    "checkpoint_file": ".log/checkpoints/miniF2F_test/n_4_informal_gpt4_turbo/lean_few_shot_informal/checkpoint_info.json",
+    "logging_dirs": [
+        ".log/evals/benchmark/miniF2F_test/20240115-205813"
+    ],
+    "proof_dump_dir": ".log/proofs/eval_driver/informal_few_shot/gpt4/miniF2F_test/20240115-205813",
+    "theorem_maps": {
+        "data/benchmarks/miniF2F/lean/src/test.lean": {
+            "aime_1983_p1": false,
+            "aime_1983_p2": false,
+            "aime_1983_p3": false,
+            "aime_1984_p1": false,
+            "aime_1984_p7": false,
+            "aime_1987_p5": false,
+            "aime_1988_p8": false
+        }
+    }
+}

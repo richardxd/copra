@@ -11,7 +11,7 @@ max_theorems_in_prompt: 7
 gpt_model_name: gpt-4-1106-preview
 max_number_of_episodes: 1
 max_steps_per_episode: 4
-render: False
+render: True # edit back to false
 checkpoint_dir: .log/checkpoints
 should_checkpoint: False
 temperature: 0.0

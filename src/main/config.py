@@ -48,6 +48,7 @@ class PromptSettings(object):
 
     def get_informal_proof_repo(self) -> InformalProofRepo:
         # Check if self has _informal_proof_repo
+        print("entering informal proof repo")
         if hasattr(self, "_informal_proof_repo"):
             return self._informal_proof_repo
         # Add informal proofs attributes to self

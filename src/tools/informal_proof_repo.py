@@ -18,6 +18,7 @@ class InformalProofRepo:
         return theorem_name in self.repo_map
     
     def get_informal_thm_proof(self, theorem_name: str) -> typing.Tuple[str, str]:
+        print("get_informal_thm_proof, repo_map: ", self.repo_map)
         return self.repo_map[theorem_name]
     
     def add_informal_thm_proof(self, theorem_name: str, informal_stmt: str, informal_proof: str):

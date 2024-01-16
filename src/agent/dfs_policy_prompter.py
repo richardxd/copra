@@ -324,6 +324,7 @@ class DfsCoqGptPolicyPrompter(PolicyPrompter):
         return prompt_message, prompt_token_count, custom_system_messages, custom_system_message_count
 
     def run_prompt(self, request: CoqGptResponse) -> list:
+        print("under running prompts")
         max_tokens_in_prompt = self._max_token_per_prompt - self.system_token_count - self._max_tokens_per_action
         prompt_message, prompt_token_count, custom_system_msg, custom_system_msg_cnt = self._get_prompt_message(request, max_tokens_in_prompt)
         messages, total_token_count = self._constrain_tokens_in_history(prompt_message, custom_system_msg, custom_system_msg_cnt, prompt_token_count, self._max_tokens_per_action)
@@ -354,6 +355,11 @@ class DfsCoqGptPolicyPrompter(PolicyPrompter):
                     temperature=temperature,
                     max_tokens=tokens_to_generate,
                     stop=["[END]"])
+                self.logger.info(f"Message: \n{messages}")
+                self.logger.info(f"Response messages: \n{responses}")                
+
+                print("message:", messages)
+                print("responses: ", responses)
                 request_end_time = time.time()
                 time_taken = request_end_time - request_start_time
                 apporx_output_tokens = usage["total_tokens"] - total_token_count

@@ -1,0 +1,17 @@
+{
+    "checkpoint_file": ".log/checkpoints/simple_benchmark_lean/n_60_dfs_gpt4_always_retrieve_no_ex/lean_dfs/checkpoint_info.json",
+    "logging_dirs": [
+        ".log/evals/benchmark/simple_benchmark_lean/20240108-232543"
+    ],
+    "proof_dump_dir": ".log/proofs/eval_driver/dfs/simple_benchmark_lean/20240108-232543",
+    "theorem_maps": {
+        "data/test/lean_proj/src/simple.lean": {
+            "a_plus_b_b_plus_a": true,
+            "a_plus_zero": true,
+            "ab_square": true,
+            "mathd_algebra_478": true,
+            "mod_arith_1": true,
+            "n_less_2_pow_n": true
+        }
+    }
+}

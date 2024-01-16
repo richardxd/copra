@@ -1,0 +1,125 @@
+File: data/test/lean_proj/src/simple.lean
+Dataset:
+ {
+    "project": "data/test/lean_proj",
+    "files": [
+        {
+            "path": "src/simple.lean",
+            "theorems": "*"
+        }
+    ]
+}
+Evaluation Settings:
+ {
+    "name": "n_60_dfs_gpt4_always_retrieve_no_ex",
+    "use_hammer": false,
+    "setting_type": "Agent",
+    "max_proof_depth": 100,
+    "timeout_in_secs": 60,
+    "proof_retries": 1,
+    "max_tokens_per_action": 100,
+    "max_theorems_in_prompt": 3,
+    "gpt_model_name": "gpt-4",
+    "max_number_of_episodes": 1,
+    "max_steps_per_episode": 60,
+    "render": false,
+    "checkpoint_dir": ".log/checkpoints/simple_benchmark_lean/n_60_dfs_gpt4_always_retrieve_no_ex/lean_few_shot_informal_to_formal_dfs_gpt4_turbo",
+    "should_checkpoint": false,
+    "temperature": 0.0,
+    "max_history_messages": 0,
+    "policy_name": "Dfs",
+    "proof_dump_dir": ".log/proofs/eval_driver/dfs/simple_benchmark_lean/20240116-002211",
+    "use_human_readable_proof_context": true,
+    "sample": 1.0,
+    "sample_seed": 3840,
+    "use_example_retrieval": false,
+    "always_use_useful_theorem_retrieval": true,
+    "num_goal_per_prompt": null
+}
+
+
+theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+begin
+    apply nat.add_comm,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 5.453820705413818
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1}
+
+
+
+theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+begin
+    intro a,
+    induction a with d hd,
+    refl,
+    rw nat.succ_add,
+    rw hd,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 8
+SearchTimeInSecs: 89.04765748977661
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 7}
+
+
+
+theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+begin
+    intros a b,
+    ring,
+end
+
+ProofFile: None
+LemmaName: theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 11.02147650718689
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+
+theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 11
+SearchTimeInSecs: 96.17310571670532
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 9}
+

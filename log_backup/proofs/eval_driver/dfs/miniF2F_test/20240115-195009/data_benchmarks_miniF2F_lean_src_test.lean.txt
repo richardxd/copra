@@ -1,0 +1,38 @@
+File: data/benchmarks/miniF2F/lean/src/test.lean
+Dataset:
+ {
+    "project": "data/benchmarks/miniF2F",
+    "files": [
+        {
+            "path": "lean/src/test.lean",
+            "theorems": "*"
+        }
+    ]
+}
+Evaluation Settings:
+ {
+    "name": "n_60_dfs_gpt4_128k_no_retrieve_no_ex",
+    "use_hammer": false,
+    "setting_type": "Agent",
+    "max_proof_depth": 100,
+    "timeout_in_secs": 60,
+    "proof_retries": 1,
+    "max_tokens_per_action": 100,
+    "max_theorems_in_prompt": 7,
+    "gpt_model_name": "gpt-4-1106-preview",
+    "max_number_of_episodes": 1,
+    "max_steps_per_episode": 60,
+    "render": false,
+    "checkpoint_dir": ".log/checkpoints/miniF2F_test/n_60_dfs_gpt4_128k_no_retrieve_no_ex/lean_few_shot_informal_to_formal_dfs_gpt4_turbo",
+    "should_checkpoint": false,
+    "temperature": 0.0,
+    "max_history_messages": 0,
+    "policy_name": "Dfs",
+    "proof_dump_dir": ".log/proofs/eval_driver/dfs/miniF2F_test/20240115-195009",
+    "use_human_readable_proof_context": true,
+    "sample": 1.0,
+    "sample_seed": 3840,
+    "use_example_retrieval": false,
+    "always_use_useful_theorem_retrieval": false,
+    "num_goal_per_prompt": null
+}

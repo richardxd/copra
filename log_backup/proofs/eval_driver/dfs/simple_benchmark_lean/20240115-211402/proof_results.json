@@ -1,0 +1,97 @@
+{
+    "path": ".log/proofs/eval_driver/dfs/simple_benchmark_lean/20240115-211402/proof_results.json",
+    "theorem_map": {
+        "data/test/lean_proj/src/simple.lean": {
+            "a_plus_b_b_plus_a": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "a_plus_b_b_plus_a",
+                "proof_steps": [],
+                "proof_time_in_secs": -1,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {},
+                "language": "COQ"
+            },
+            "a_plus_zero": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "a_plus_zero",
+                "proof_steps": [],
+                "proof_time_in_secs": -1,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {},
+                "language": "COQ"
+            },
+            "ab_square": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "ab_square",
+                "proof_steps": [],
+                "proof_time_in_secs": -1,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {},
+                "language": "COQ"
+            },
+            "mathd_algebra_478": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mathd_algebra_478",
+                "proof_steps": [],
+                "proof_time_in_secs": -1,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {},
+                "language": "COQ"
+            },
+            "mod_arith_1": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "mod_arith_1",
+                "proof_steps": [],
+                "proof_time_in_secs": -1,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {},
+                "language": "COQ"
+            },
+            "n_less_2_pow_n": {
+                "proof_file": null,
+                "proof_found": false,
+                "lemma_name": "n_less_2_pow_n",
+                "proof_steps": [],
+                "proof_time_in_secs": -1,
+                "inferences_taken": -1,
+                "possible_failed_paths": -1,
+                "num_of_backtracks": -1,
+                "is_timeout": false,
+                "is_inference_exhausted": false,
+                "longest_success_path": -1,
+                "additional_info": {},
+                "language": "COQ"
+            }
+        }
+    }
+}

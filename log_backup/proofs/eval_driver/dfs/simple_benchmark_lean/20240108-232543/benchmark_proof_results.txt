@@ -1,0 +1,979 @@
+Settings: 
+{
+    "name": "n_60_dfs_gpt4_always_retrieve_no_ex",
+    "use_hammer": false,
+    "setting_type": "Agent",
+    "max_proof_depth": 100,
+    "timeout_in_secs": 60,
+    "proof_retries": 1,
+    "max_tokens_per_action": 100,
+    "max_theorems_in_prompt": 3,
+    "gpt_model_name": "gpt-4",
+    "max_number_of_episodes": 1,
+    "max_steps_per_episode": 60,
+    "render": false,
+    "checkpoint_dir": ".log/checkpoints/simple_benchmark_lean/n_60_dfs_gpt4_always_retrieve_no_ex/lean_dfs",
+    "should_checkpoint": false,
+    "temperature": 0.0,
+    "max_history_messages": 0,
+    "policy_name": "Dfs",
+    "proof_dump_dir": ".log/proofs/eval_driver/dfs/simple_benchmark_lean/20240108-232543",
+    "use_human_readable_proof_context": true,
+    "sample": 1.0,
+    "sample_seed": 3840,
+    "use_example_retrieval": false,
+    "always_use_useful_theorem_retrieval": true,
+    "num_goal_per_prompt": null
+}
+Benchmark: 
+{
+    "name": "simple_benchmark_lean",
+    "num_files": 2,
+    "language": "LEAN",
+    "datasets": [
+        {
+            "project": "data/test/lean_proj",
+            "files": [
+                {
+                    "path": "src/simple.lean",
+                    "theorems": [
+                        "a_plus_b_b_plus_a",
+                        "a_plus_zero",
+                        "ab_square",
+                        "mathd_algebra_478",
+                        "mod_arith_1",
+                        "n_less_2_pow_n"
+                    ]
+                }
+            ]
+        }
+    ],
+    "few_shot_data_path_for_retrieval": null,
+    "few_shot_metadata_filename_for_retrieval": null,
+    "dfs_data_path_for_retrieval": null,
+    "dfs_metadata_filename_for_retrieval": null
+}
+Lemma: a_plus_b_b_plus_a
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+begin
+    apply nat.add_comm,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 5.414930820465088
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1}
+
+
+Lemma: a_plus_zero
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+begin
+    intro a,
+    refl,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 9.705960273742676
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: ab_square
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+begin
+    intros a b,
+    ring,
+end
+
+ProofFile: None
+LemmaName: theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 10.051867008209229
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: mathd_algebra_478
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem mathd_algebra_478
+(b h v : ℝ)
+(h₀ : 0 < b ∧ 0 < h ∧ 0 < v)
+(h₁ : v = 1 / 3 * (b * h))
+(h₂ : b = 30)
+(h₃ : h = 13 / 2) :
+v = 65 :=
+begin
+    rw [h₁, h₂, h₃],
+    norm_num,
+end
+
+ProofFile: None
+LemmaName: theorem mathd_algebra_478
+(b h v : ℝ)
+(h₀ : 0 < b ∧ 0 < h ∧ 0 < v)
+(h₁ : v = 1 / 3 * (b * h))
+(h₂ : b = 30)
+(h₃ : h = 13 / 2) :
+v = 65 :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 11.900599718093872
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: mod_arith_1
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 7
+SearchTimeInSecs: 17.790490865707397
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 5}
+
+
+Lemma: n_less_2_pow_n
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem n_less_2_pow_n
+(n : ℕ)
+(h₀ : 1 ≤ n) :
+n < 2^n :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem n_less_2_pow_n
+(n : ℕ)
+(h₀ : 1 ≤ n) :
+n < 2^n :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 9.709120750427246
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Success rate: 4/6 = 0.6666666666666666 for benchmark: simple_benchmark_lean
+Lemma: a_plus_b_b_plus_a
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+begin
+    apply nat.add_comm,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 5.414930820465088
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1}
+
+
+Lemma: a_plus_zero
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+begin
+    intro a,
+    refl,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 9.705960273742676
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: ab_square
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+begin
+    intros a b,
+    ring,
+end
+
+ProofFile: None
+LemmaName: theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 11.678246259689331
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: mathd_algebra_478
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem mathd_algebra_478
+(b h v : ℝ)
+(h₀ : 0 < b ∧ 0 < h ∧ 0 < v)
+(h₁ : v = 1 / 3 * (b * h))
+(h₂ : b = 30)
+(h₃ : h = 13 / 2) :
+v = 65 :=
+begin
+    rw [h₁, h₂, h₃],
+    norm_num,
+end
+
+ProofFile: None
+LemmaName: theorem mathd_algebra_478
+(b h v : ℝ)
+(h₀ : 0 < b ∧ 0 < h ∧ 0 < v)
+(h₁ : v = 1 / 3 * (b * h))
+(h₂ : b = 30)
+(h₃ : h = 13 / 2) :
+v = 65 :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 12.187848806381226
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: mod_arith_1
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 8
+SearchTimeInSecs: 22.825841903686523
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 6}
+
+
+Lemma: n_less_2_pow_n
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem n_less_2_pow_n
+(n : ℕ)
+(h₀ : 1 ≤ n) :
+n < 2^n :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem n_less_2_pow_n
+(n : ℕ)
+(h₀ : 1 ≤ n) :
+n < 2^n :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 7.42293906211853
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Success rate: 4/6 = 0.6666666666666666 for benchmark: simple_benchmark_lean
+Lemma: a_plus_b_b_plus_a
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+begin
+    apply nat.add_comm,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 5.414930820465088
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1}
+
+
+Lemma: a_plus_zero
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+begin
+    intro a,
+    refl,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 9.705960273742676
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: ab_square
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+begin
+    intros a b,
+    ring,
+end
+
+ProofFile: None
+LemmaName: theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 11.678246259689331
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: mathd_algebra_478
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem mathd_algebra_478
+(b h v : ℝ)
+(h₀ : 0 < b ∧ 0 < h ∧ 0 < v)
+(h₁ : v = 1 / 3 * (b * h))
+(h₂ : b = 30)
+(h₃ : h = 13 / 2) :
+v = 65 :=
+begin
+    rw [h₁, h₂, h₃],
+    norm_num,
+end
+
+ProofFile: None
+LemmaName: theorem mathd_algebra_478
+(b h v : ℝ)
+(h₀ : 0 < b ∧ 0 < h ∧ 0 < v)
+(h₁ : v = 1 / 3 * (b * h))
+(h₂ : b = 30)
+(h₃ : h = 13 / 2) :
+v = 65 :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 12.187848806381226
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: mod_arith_1
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 8
+SearchTimeInSecs: 22.825841903686523
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 6}
+
+
+Lemma: n_less_2_pow_n
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem n_less_2_pow_n
+(n : ℕ)
+(h₀ : 1 ≤ n) :
+n < 2^n :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem n_less_2_pow_n
+(n : ℕ)
+(h₀ : 1 ≤ n) :
+n < 2^n :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 7.42293906211853
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Success rate: 4/6 = 0.6666666666666666 for benchmark: simple_benchmark_lean
+Lemma: a_plus_b_b_plus_a
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+begin
+    apply nat.add_comm,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 5.414930820465088
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1}
+
+
+Lemma: a_plus_zero
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+begin
+    intro a,
+    refl,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 9.705960273742676
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: ab_square
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+begin
+    intros a b,
+    ring,
+end
+
+ProofFile: None
+LemmaName: theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 11.678246259689331
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: mathd_algebra_478
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem mathd_algebra_478
+(b h v : ℝ)
+(h₀ : 0 < b ∧ 0 < h ∧ 0 < v)
+(h₁ : v = 1 / 3 * (b * h))
+(h₂ : b = 30)
+(h₃ : h = 13 / 2) :
+v = 65 :=
+begin
+    rw [h₁, h₂, h₃],
+    norm_num,
+end
+
+ProofFile: None
+LemmaName: theorem mathd_algebra_478
+(b h v : ℝ)
+(h₀ : 0 < b ∧ 0 < h ∧ 0 < v)
+(h₁ : v = 1 / 3 * (b * h))
+(h₂ : b = 30)
+(h₃ : h = 13 / 2) :
+v = 65 :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 12.187848806381226
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: mod_arith_1
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 8
+SearchTimeInSecs: 22.825841903686523
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 6}
+
+
+Lemma: n_less_2_pow_n
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem n_less_2_pow_n
+(n : ℕ)
+(h₀ : 1 ≤ n) :
+n < 2^n :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem n_less_2_pow_n
+(n : ℕ)
+(h₀ : 1 ≤ n) :
+n < 2^n :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 7.42293906211853
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Success rate: 4/6 = 0.6666666666666666 for benchmark: simple_benchmark_lean
+Lemma: a_plus_b_b_plus_a
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+begin
+    apply nat.add_comm,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 5.414930820465088
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1}
+
+
+Lemma: a_plus_zero
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+begin
+    intro a,
+    refl,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 9.705960273742676
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: ab_square
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+begin
+    intros a b,
+    ring,
+end
+
+ProofFile: None
+LemmaName: theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 11.678246259689331
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: mathd_algebra_478
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem mathd_algebra_478
+(b h v : ℝ)
+(h₀ : 0 < b ∧ 0 < h ∧ 0 < v)
+(h₁ : v = 1 / 3 * (b * h))
+(h₂ : b = 30)
+(h₃ : h = 13 / 2) :
+v = 65 :=
+begin
+    rw [h₁, h₂, h₃],
+    norm_num,
+end
+
+ProofFile: None
+LemmaName: theorem mathd_algebra_478
+(b h v : ℝ)
+(h₀ : 0 < b ∧ 0 < h ∧ 0 < v)
+(h₁ : v = 1 / 3 * (b * h))
+(h₂ : b = 30)
+(h₃ : h = 13 / 2) :
+v = 65 :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 12.187848806381226
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: mod_arith_1
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 8
+SearchTimeInSecs: 22.825841903686523
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 6}
+
+
+Lemma: n_less_2_pow_n
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem n_less_2_pow_n
+(n : ℕ)
+(h₀ : 1 ≤ n) :
+n < 2^n :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem n_less_2_pow_n
+(n : ℕ)
+(h₀ : 1 ≤ n) :
+n < 2^n :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 7.42293906211853
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Success rate: 4/6 = 0.6666666666666666 for benchmark: simple_benchmark_lean
+Lemma: a_plus_b_b_plus_a
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+begin
+    apply nat.add_comm,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_b_b_plus_a
+(a b : ℕ) : a + b = b + a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 5.414930820465088
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 1}
+
+
+Lemma: a_plus_zero
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+begin
+    intro a,
+    refl,
+end
+
+ProofFile: None
+LemmaName: theorem a_plus_zero: ∀ (a : ℕ), a + 0 = a :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 9.705960273742676
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: ab_square
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+begin
+    intros a b,
+    ring,
+end
+
+ProofFile: None
+LemmaName: theorem ab_square:
+∀ (a b: ℝ), (a + b)^2 = a^2 + b^2 + 2*a*b :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 11.678246259689331
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: mathd_algebra_478
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem mathd_algebra_478
+(b h v : ℝ)
+(h₀ : 0 < b ∧ 0 < h ∧ 0 < v)
+(h₁ : v = 1 / 3 * (b * h))
+(h₂ : b = 30)
+(h₃ : h = 13 / 2) :
+v = 65 :=
+begin
+    rw [h₁, h₂, h₃],
+    norm_num,
+end
+
+ProofFile: None
+LemmaName: theorem mathd_algebra_478
+(b h v : ℝ)
+(h₀ : 0 < b ∧ 0 < h ∧ 0 < v)
+(h₁ : v = 1 / 3 * (b * h))
+(h₂ : b = 30)
+(h₃ : h = 13 / 2) :
+v = 65 :=
+SearchResult: [SUCCESS]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 3
+SearchTimeInSecs: 12.187848806381226
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Lemma: mod_arith_1
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem mod_arith_1
+(x : ℕ) : x % 2 = 0 → (x * x) % 2 = 0 :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 8
+SearchTimeInSecs: 22.825841903686523
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 6}
+
+
+Lemma: n_less_2_pow_n
+File: data/test/lean_proj/src/simple.lean
+Proof/Incomplete proof: 
+theorem n_less_2_pow_n
+(n : ℕ)
+(h₀ : 1 ≤ n) :
+n < 2^n :=
+begin
+    
+
+
+ProofFile: None
+LemmaName: theorem n_less_2_pow_n
+(n : ℕ)
+(h₀ : 1 ≤ n) :
+n < 2^n :=
+SearchResult: [FAILED]
+IsInferenceExhausted: False
+IsTimeout: False
+LongestSuccessPath: -1 
+StepsUsed: 2
+SearchTimeInSecs: 7.42293906211853
+NumberOfBacktracks: -1
+PossibleFailedPaths: -1
+AdditionalInfo: {'queries': 2}
+
+
+Success rate: 4/6 = 0.6666666666666666 for benchmark: simple_benchmark_lean

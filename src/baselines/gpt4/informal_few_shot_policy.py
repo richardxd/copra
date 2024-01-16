@@ -95,13 +95,20 @@ class InformalFewShotGptPolicy(Policy):
             tries = 10
             exceptions = []
             if self.language == ProofAction.Language.LEAN:
-                theorem_stmt, _ = self.informal_proof_repo.get_informal_thm_proof(self.lemma_name)
+                # theorem_stmt, _ = self.informal_proof_repo.get_informal_thm_proof(self.lemma_name) # incorrectly using get informal thm proof instead of the lemma name
+                print("statement with name:", state.theorem_statement_with_name)
+                print("\n\n\n")
+                theorem_stmt = state.training_data_format.start_goals[0].goal
                 gpt_response = InformalFewShotGptResponse(theorem=theorem_stmt)
+                self.logger.info(f"GPT response:\n\n{gpt_response}")
+                print("GPT response:\n\n", gpt_response)
             else:
                 raise Exception(f"Unsupported language {self.language}")
             while not success and tries > 0:
                 try:
                     responses = self._policy_prompter.run_prompt(gpt_response)
+                    self.logger.info(f"Responses:\n\n{responses}")
+                    print("parsed response: ", responses)
                     actions_tuple : typing.List[typing.Tuple[ProofAction, float]] = self._policy_prompter.parse_response(responses)
                     chosen_message = actions_tuple[0][0].original_message # Selecting only top action here
                     self.logger.info(f"Chosen message: \n\n{chosen_message['content']}")

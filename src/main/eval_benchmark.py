@@ -149,6 +149,7 @@ def eval_dataset(env_settings: EnvSettings, eval_benchmark: EvalBenchmark, promp
             search_guidance_policy : Policy = None
             policy_prompter : PolicyPrompter = None
 
+            print("eval_settings.policy_name", eval_settings.policy_name)
             if eval_settings.policy_name == PolicyName.Dfs:
                 if prompt_settings.informal_proof_repo is not None:
                     informal_proof_repo = prompt_settings.get_informal_proof_repo()
@@ -206,6 +207,7 @@ def eval_dataset(env_settings: EnvSettings, eval_benchmark: EvalBenchmark, promp
                     logger=logger,
                     informal_proof_repo=informal_proof_repo)
             elif eval_settings.policy_name == PolicyName.InformalFewShot:
+                print("under informal few-shots")
                 informal_proof_repo = prompt_settings.get_informal_proof_repo()
                 informal_proof_dump_directory = os.path.join(eval_settings.proof_dump_dir, "informal_proofs")
                 os.makedirs(informal_proof_dump_directory, exist_ok=True)
@@ -343,6 +345,9 @@ def eval_benchmark(experiment: Experiments, log_dir: str, logger: logging.Logger
     os.makedirs(eval_settings.checkpoint_dir, exist_ok=True)
     # Load the checkpoint file if it exists
     checkpoint_file = os.path.join(eval_settings.checkpoint_dir, "checkpoint_info.json")
+    print("done here so far")
+    print("checkpoint_file", checkpoint_file)
+    print("informal proofs:", prompt_settings.informal_proof_repo)
     if os.path.exists(checkpoint_file):
         with open(checkpoint_file, "r") as f:
             checkpoint_info: EvalRunCheckpointInfo = EvalRunCheckpointInfo.from_json(f.read())
